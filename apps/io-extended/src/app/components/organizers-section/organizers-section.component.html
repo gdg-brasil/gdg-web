@@ -1,0 +1,40 @@
+<section class="extTeams cid-sBbl3xCt6U" id="extTeams15-b">
+
+    <div class="container align-center">
+        <h2 class="pb-5 mbr-fonts-style mbr-bold display-2">Nossos organizadores</h2>
+    </div>
+
+    <div class="container">
+        <div class="row justify-content-center">
+
+            <div class="card col-12 col-md-6 col-lg-3" *ngFor="let organizer of organizers">
+                <div class="card-img">
+                    <img alt="" loading="lazy" class="lazyload" [src]="organizer.image">
+                </div>
+                <div class="card-box align-center">
+                    <h4 class="card-title mbr-fonts-style mbr-semibold display-5">{{organizer.name}}</h4>
+
+
+                    <div class="social-links">
+                        <a *ngIf="organizer.twitter" href="https://twitter.com/{{organizer.twitter}}" target="_blank">
+                            <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-twitter socicon"></span>
+                        </a>
+                        <a *ngIf="organizer.facebook" href="https://www.facebook.com/{{organizer.facebook}}"
+                            target="_blank">
+                            <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-facebook socicon"></span>
+                        </a>
+                        <a *ngIf="organizer.instagram" href="https://www.instagram.com/{{organizer.instagram}}/"
+                            target="_blank">
+                            <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-instagram socicon"></span>
+                        </a>
+                        <a *ngIf="organizer.linkedin" href="https://www.linkedin.com/in/{{organizer.linkedin}}/"
+                            target="_blank">
+                            <span class="px-2 mbr-iconfont mbr-iconfont-social socicon-linkedin socicon"></span>
+                        </a>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,6 +1,6 @@
-import { Controller, Get } from '@nestjs/common';
+import { Controller, Get, Param } from '@nestjs/common';
 
-import { Message } from '@gdg-web/api-interfaces';
+import { Community, Organizer } from '@gdg-web/api-interfaces';
 
 import { AppService } from './app.service';
 
@@ -8,8 +8,13 @@ import { AppService } from './app.service';
 export class AppController {
   constructor(private readonly appService: AppService) {}
 
-  @Get('hello')
-  getData(): Message {
-    return this.appService.getData();
+  @Get('organizers')
+  getOrganizersData(): Organizer[] {
+    return this.appService.getOrganizersData();
+  }
+
+  @Get('communities/:type')
+  getCommunities(@Param('type') type: 'gdg' | 'wtm'): Community[] {
+    return this.appService.getCommunitiesData(type);
   }
 }

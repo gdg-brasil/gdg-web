@@ -68,7 +68,7 @@
       "projectType": "application",
       "root": "apps/io-extended",
       "sourceRoot": "apps/io-extended/src",
-      "prefix": "gdg-web",
+      "prefix": "iox",
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
