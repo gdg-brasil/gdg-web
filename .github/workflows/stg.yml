@@ -15,6 +15,11 @@ jobs:
       - run: node_modules/.bin/ng run devfest:build
       - uses: w9jds/firebase-action@master
         with:
+          args: use devfest-stg
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - uses: w9jds/firebase-action@master
+        with:
           args: deploy --only hosting:devfest-stg
         env:
           FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
