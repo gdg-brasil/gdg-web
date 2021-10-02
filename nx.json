@@ -33,12 +33,28 @@
     "api-interfaces": {
       "tags": []
     },
+    "devfest": {
+      "tags": []
+    },
+    "devfest-e2e": {
+      "tags": [],
+      "implicitDependencies": ["devfest"]
+    },
+    "firebase": {
+      "tags": []
+    },
     "io-extended": {
       "tags": []
     },
     "io-extended-e2e": {
       "tags": [],
       "implicitDependencies": ["io-extended"]
+    },
+    "material": {
+      "tags": []
+    },
+    "ui-lit": {
+      "tags": []
     }
   }
 }

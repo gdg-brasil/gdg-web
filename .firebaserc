@@ -1,0 +1,19 @@
+{
+  "projects": {
+    "default": "gdg-brasil",
+    "devfest-stg": "gdg-brasil",
+    "devfest-prod": "gdg-brasil"
+  },
+  "targets": {
+    "gdg-brasil": {
+      "hosting": {
+        "devfest-stg": [
+          "gdg-brasil-devfest-stg"
+        ],
+        "devfest-prod": [
+          "gdg-brasil-devfest"
+        ]
+      }
+    }
+  }
+}

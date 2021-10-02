@@ -11,6 +11,7 @@ export class HomePageComponent {
   organizers$ = this.http.get<Organizer[]>('/api/organizers');
   wtmChapters$ = this.http.get<Community[]>('/api/communities/wtm');
   gdgChapters$ = this.http.get<Community[]>('/api/communities/gdg');
+  backOfficeData$ = this.http.get('https://devfest-backoffice.000webhostapp.com/wp-json/wp/v2/media?parent=14');
 
   constructor(private http: HttpClient) {}
 }

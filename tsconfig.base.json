@@ -15,7 +15,10 @@
     "skipDefaultLibCheck": true,
     "baseUrl": ".",
     "paths": {
-      "@gdg-web/api-interfaces": ["libs/api-interfaces/src/index.ts"]
+      "@gdg-web/api-interfaces": ["libs/api-interfaces/src/index.ts"],
+      "@gdg-web/firebase": ["libs/firebase/src/index.ts"],
+      "@gdg-web/material": ["libs/material/src/index.ts"],
+      "@gdg-web/ui-lit": ["libs/ui-lit/src/index.ts"]
     }
   },
   "exclude": ["node_modules", "tmp"]

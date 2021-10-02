@@ -160,14 +160,6 @@ export class AppService {
       },
     ];
 
-    if (type === 'gdg') {
-      return communities.filter(c => c.type === 'gdg');
-    }
-
-    if (type === 'wtm') {
-      return communities.filter(c => c.type === 'wtm');
-    }
-
-    return [];
+    return communities.filter(c => c.type === type);
   }
 }

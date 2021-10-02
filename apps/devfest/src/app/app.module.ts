@@ -1,0 +1,57 @@
+import { CUSTOM_ELEMENTS_SCHEMA, NgModule } from '@angular/core';
+import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { HttpClientModule } from '@angular/common/http';
+import { MaterialModule } from '@gdg-web/material';
+
+import { AppComponent } from './app.component';
+import { AppRoutingModule } from './app-routing.module';
+import { 
+  HomePageComponent, 
+  SpeakersPageComponent
+} from './pages';
+import { 
+  AboutSectionComponent,
+  FooterComponent,
+  GallerySectionComponent,
+  HeaderComponent,
+  HeroSectionComponent,
+  MapSectionComponent,
+  SpeakersSectionComponent,
+  VideoSectionComponent
+} from './components';
+
+const COMPONENTS = [
+  HeaderComponent,
+  FooterComponent,
+  AboutSectionComponent,
+  GallerySectionComponent,
+  HeroSectionComponent, 
+  MapSectionComponent,
+  SpeakersSectionComponent,
+  VideoSectionComponent
+]
+
+const PAGES = [
+  HomePageComponent,
+  SpeakersPageComponent
+]
+
+@NgModule({
+  declarations: [
+    AppComponent,
+    COMPONENTS,
+    PAGES,
+  ],
+  imports: [
+    BrowserModule,
+    BrowserAnimationsModule,
+    HttpClientModule,
+    AppRoutingModule,
+    MaterialModule
+  ],
+  providers: [],
+  bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
+})
+export class AppModule {}

@@ -11,3 +11,5 @@
 <iox-subscription-section></iox-subscription-section>
 
 <iox-organizers-section [organizers]="organizers$ | async"></iox-organizers-section>
+
+{{ backOfficeData$ | async | json }}
