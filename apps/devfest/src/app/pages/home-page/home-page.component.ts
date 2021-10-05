@@ -7,9 +7,10 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./home-page.component.scss'],
 })
 export class HomePageComponent {
-  speakers$ = this.api.getAllSpeakers();
-  organizers$ = this.api.getAllOrganizers();
-  organizer$ = this.api.getOrganizerById(14);
+  links$ = this.api.getAllLinks();
+  // speakers$ = this.api.getAllSpeakers();
+  // organizers$ = this.api.getAllOrganizers();
+  // organizer$ = this.api.getOrganizerById(14);
 
   constructor(private api: ApiService) {}
 }

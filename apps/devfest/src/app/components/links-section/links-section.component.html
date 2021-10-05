@@ -1,0 +1,46 @@
+<div class="container">
+  <div class="image"></div>
+  <div class="description-block">
+    <div class="block">
+      <h2>Organização</h2>
+      <p>GDG Devfest Brasil Lorem ipsum dolor sit amet consectetur adipisicing elit. Quaerat magnam ut laudantium iusto facere, voluptatibus voluptatem voluptate aspernatur velit aliquid doloremque ipsum eum quas non voluptas, enim, nobis a quisquam.</p>
+      <a routerLink="/team">
+        <paper-button class="cta-button">
+          <span>ver time</span>
+          <iron-icon icon="icons:chevron-right"></iron-icon>
+        </paper-button>
+      </a>
+    </div>
+    <div class="block">
+      <h2>O que é GDG?</h2>
+      <p>O Google Developer Group é uma comunidade de voluntários que criam projetos interessantes e compartilham experiências sobre as tecnologias do Google.</p>
+      <a href="https://developers.google.com/community/gdg" target="_blank" rel="noopener norefereer">
+        <paper-button class="cta-button">
+          <span>ler mais</span>
+          <iron-icon icon="icons:chevron-right"></iron-icon>
+        </paper-button>
+      </a>
+    </div>
+    <div class="block">
+      <h2>O que é DevFest?</h2>
+      <p>DevFests são eventos de desenvolvedores liderados pela comunidade, hospedados por Google Developer Groups em todo o mundo.</p>
+      <a href="https://devfest.withgoogle.com/events/devfest21" target="_blank" rel="noopener norefereer">
+        <paper-button class="cta-button">
+          <span>ler mais</span>
+          <iron-icon icon="icons:chevron-right"></iron-icon>
+        </paper-button>
+      </a>
+    </div>
+
+    <div class="block" *ngFor="let link of links">
+      <h2>{{ link.title }}</h2>
+      <p>{{ link.description }}</p>
+      <a [href]="link.link" target="_blank" rel="noopener norefereer">
+        <paper-button class="cta-button">
+          <span>{{ link.cta }}</span>
+          <iron-icon icon="icons:chevron-right"></iron-icon>
+        </paper-button>
+      </a>
+    </div>
+  </div>
+</div>

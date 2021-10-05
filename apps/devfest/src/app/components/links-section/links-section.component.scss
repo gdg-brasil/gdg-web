@@ -1,0 +1,33 @@
+.container {
+  display: flex;
+}
+
+.image {
+  width: 100%;
+}
+
+.description-block {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
+.block {
+  & > h2 {
+    margin: 0;
+    padding: 8px; 
+  }
+
+  & > p {
+    margin: 0;
+    padding: 8px;
+  }
+
+  &:not(:last-of-type) {
+    margin-bottom: 32px;
+  }
+}
+
+paper-button.cta-button {
+  margin-top: 10px;
+}
