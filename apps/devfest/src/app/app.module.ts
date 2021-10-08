@@ -19,6 +19,7 @@ import {
   HeroSectionComponent,
   LinksSectionComponent,
   MapSectionComponent,
+  OrganizersSectionComponent,
   SpeakersSectionComponent,
   VideoSectionComponent
 } from './components';
@@ -30,6 +31,7 @@ const COMPONENTS = [
   GallerySectionComponent,
   HeroSectionComponent, 
   MapSectionComponent,
+  OrganizersSectionComponent,
   SpeakersSectionComponent,
   VideoSectionComponent,
   LinksSectionComponent

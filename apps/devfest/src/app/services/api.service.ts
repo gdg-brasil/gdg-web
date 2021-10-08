@@ -1,13 +1,31 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map } from 'rxjs/operators';
+import { map, switchMap, tap } from 'rxjs/operators';
 
 export interface Link {
   title: string;
   description: string;
   link: string;
   cta: string;
+}
+
+export interface Organizer {
+  name: string;
+  url: string;
+  gdg: string;
+}
+
+
+export interface MapInfo {
+  url: string;
+  alt: string;
+  title: string;
+  description: string;
+}
+
+export interface VideoInfo {
+  embedded_code: string;
 }
 
 @Injectable({
@@ -18,7 +36,7 @@ export class ApiService {
 
   constructor(private http: HttpClient) { }
 
-  getAllLinks(): Observable<any[]> {
+  getAllLinks(): Observable<Link[]> {
     return this.http.get<any[]>(`${this.baseUrl}/links`).pipe(
       map((data: any[]): Link[] => {
         return data.map(link => {
@@ -29,9 +47,44 @@ export class ApiService {
     );
   }
 
-  // getAllOrganizers(): Observable<any[]> {
-  //   return this.http.get<any[]>(`${this.baseUrl}/organizers`);
-  // }
+  getAllOrganizers(): Observable<Organizer[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
+      map((data: any[]): Organizer[] => {
+        return data.map(organizer => {
+          const { acf } = organizer;
+          const { photo, chapter } = acf;
+          let gdg = '';
+          if (chapter) {
+            gdg = chapter[0].post_title;
+          }
+
+          return { ...acf, url: photo.url, gdg } as Organizer;
+        })
+      })
+    );
+  }
+
+  getMapInfo(): Observable<MapInfo> {
+    return this.http.get<any[]>(`${this.baseUrl}/maps`).pipe(
+      switchMap((data: any[]): Observable<MapInfo> => {
+        const mapInfo = data[0];
+        const { image, title, description } = mapInfo.acf;
+        return of({ ...image, title, description });
+      })
+    );
+  }
+
+  getVideoInfo(): Observable<VideoInfo> {
+    return this.http.get<any[]>(`${this.baseUrl}/videos`).pipe(
+      switchMap((data: any[]): Observable<VideoInfo> => {
+        const videoInfo = data[0];
+        const { acf } = videoInfo;
+        return of({ ...acf } as VideoInfo);
+      })
+    );
+  }
+
+
 
   // getOrganizerById(id: number): Observable<any> {
   //   return this.http.get<any[]>(`${this.baseUrl}/media?parent=${id}`);

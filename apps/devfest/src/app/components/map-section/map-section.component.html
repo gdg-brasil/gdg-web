@@ -1,7 +1,14 @@
-<div class="map-image"></div>
+<img [src]="mapInfo?.url" class="map-image" [alt]="mapInfo?.alt" />
 <div class="container">
   <div class="description-card">
-    <h2>Localização</h2>
-    <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Minima praesentium maxime ipsam sunt in, dolorum nesciunt hic recusandae cupiditate quis ab optio ad quo laudantium neque id qui eum? Suscipit?</p>
+    <h2>{{ mapInfo?.title }}</h2>
+    <p>{{ mapInfo?.description }}</p>
+
+    <a routerLink="/organizacao">
+      <paper-button class="cta-button">
+        <span>ver organização</span>
+        <iron-icon icon="icons:chevron-right"></iron-icon>
+      </paper-button>
+    </a>
   </div>
 </div>

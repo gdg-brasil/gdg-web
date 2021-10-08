@@ -1,0 +1,50 @@
+<div class="container">
+  <h2 class="container-title">{{title}}</h2>
+
+  <div class="speakers-wrapper">
+    <div class="speaker" *ngFor="let organizer of organizers">
+      <div class="relative">
+        <div class="photo">
+          <img [src]="organizer.url" loading="lazy" />
+        </div>
+        <div class="description">
+          <h3 class="name truncate">{{organizer.name}}</h3>
+          <p>{{organizer.gdg}}</p>
+          <div class="origin"></div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- 
+    <div class="speaker" *ngFor="let speaker of speakers">
+      <div class="relative">
+        <div class="photo">
+          <img [src]="speaker.photoUrl" alt="speaker photo" loading="lazy" />
+        </div>
+        <div class="badges">
+          <a target="_blank" rel="noopener noreferrer"
+            *ngFor="let badge of speaker.badges" 
+            [href]="badge.link" 
+            class="badge"
+            [class.gde-b]="badge.name === 'gde'"
+            [class.google-b]="badge.name === 'google'"
+          >
+          </a>
+        </div>
+        <div class="description">
+          <h3 class="name truncate">{{speaker.name}}</h3>
+          <div class="origin">{{speaker.country || speaker.company}}</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+
+  <a routerLink="/speakers">
+    <paper-button class="cta-button">
+      <span>ver todos palestrantes</span>
+      <iron-icon icon="icons:chevron-right"></iron-icon>
+    </paper-button>
+  </a> -->
+</div>

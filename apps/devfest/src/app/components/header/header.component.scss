@@ -1,49 +1,99 @@
-.header {
-  display: block;
-  position: fixed;
-  z-index: 1;
-  height: 64px;
-  width: 100%;
-  border-bottom: 1px solid var(--divider-color);
-  background-color: var(--primary-background-color);
-  
-  transition: background-color var(--animation), border-bottom-color var(--animation), color var(--animation);
-  color: var(--primary-text-color);
+.sidenav-container {
+  height: 100%;
+}
 
-  &.transparent {
-    background-color: transparent;
-    border-bottom: 0;
+.sidenav {
+  width: 208px;
+}
 
-    a {
-      color: #ffffff;
-    }
-  }
+.sidenav .mat-toolbar {
+  background: inherit;
+}
 
-  &-toolbar {
-    text-transform: uppercase;
-    margin: 0 auto;
-    padding: 0 16px;
-    height: 64px;
-    max-width: var(--max-container-width);
-    display: var(--layout-horizontal_-_display);
-    flex-direction: var(--layout-horizontal_-_flex-direction);
-    align-items: var(--layout-center_-_align-items);
-    position: relative;
-    pointer-events: none;
-    font-size: 16px;
-
-    a {
-      color: #626262;
-      padding: 0 20px;
-      text-align: center;
-    }
-
-    button {
-      margin-left: 20px;
-    }
-
-    @media (min-width: 640px) {
-      padding: 0 36px;
-    }
+.sidenav-logo {
+  img {
+    padding-top: 15px;
+    width: 100%;
   }
 }
+
+.mat-toolbar.mat-primary {
+  position: fixed;
+  top: 0;
+  z-index: 1;
+  background-color: #fff;
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+
+.mat-list-base {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 8px 24px;
+  gap: 16px;
+}
+
+a {
+  color: #626262;
+  text-align: center;
+  text-transform: uppercase;
+  padding-right: 40px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.mat-raised-button {
+  text-transform: uppercase;
+}
+
+.mat-icon {
+  color: #626262;
+}
+
+// .header {
+//   display: block;
+//   z-index: 1;
+//   height: 64px;
+//   width: 100%;
+//   border-bottom: 1px solid var(--divider-color);
+//   background-color: var(--primary-background-color);
+  
+//   transition: background-color var(--animation), border-bottom-color var(--animation), color var(--animation);
+//   color: var(--primary-text-color);
+
+//   &.transparent {
+//     background-color: transparent;
+//     border-bottom: 0;
+
+//     a {
+//       color: #ffffff;
+//     }
+//   }
+
+//   &-toolbar {
+//     text-transform: uppercase;
+//     margin: 0 auto;
+//     padding: 0 16px;
+//     height: 64px;
+//     max-width: var(--max-container-width);
+//     display: var(--layout-horizontal_-_display);
+//     flex-direction: var(--layout-horizontal_-_flex-direction);
+//     align-items: var(--layout-center_-_align-items);
+//     position: relative;
+//     pointer-events: none;
+//     font-size: 16px;
+
+
+
+//     button {
+//       margin-left: 20px;
+//     }
+
+//     @media (min-width: 640px) {
+//       padding: 0 36px;
+//     }
+//   }
+// }
+

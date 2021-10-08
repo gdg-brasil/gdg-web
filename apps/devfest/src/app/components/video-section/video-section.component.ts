@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
+import { VideoInfo } from '../../services/api.service';
 
 @Component({
   selector: 'dfb-video-section',
@@ -7,7 +8,11 @@ import { DomSanitizer } from '@angular/platform-browser';
   styleUrls: ['./video-section.component.scss'],
 })
 export class VideoSectionComponent {
-  safeURL = this.sanitizer.bypassSecurityTrustResourceUrl('https://www.youtube.com/embed/H-NeEdpGk6k');
+  @Input() videoInfo!: VideoInfo | null;
 
   constructor(private sanitizer: DomSanitizer) {}
+
+  get safeUrl() {
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.videoInfo?.embedded_code}`);
+  }
 }
