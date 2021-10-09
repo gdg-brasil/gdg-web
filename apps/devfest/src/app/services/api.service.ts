@@ -32,7 +32,7 @@ export interface VideoInfo {
   providedIn: 'root',
 })
 export class ApiService {
-  baseUrl = 'http://backoffice.devfest.com.br/wp-json/wp/v2';
+  baseUrl = 'https://backoffice.devfest.com.br/wp-json/wp/v2';
 
   constructor(private http: HttpClient) { }
 
