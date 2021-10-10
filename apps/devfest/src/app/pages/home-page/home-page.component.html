@@ -1,8 +1,9 @@
 <dfb-hero-section></dfb-hero-section>
 <dfb-about-section></dfb-about-section>
-<dfb-speakers-section [speakers]="speakers$ | async" [organizer]="organizer$ | async"></dfb-speakers-section>
-<dfb-video-section></dfb-video-section>
-<dfb-gallery-section></dfb-gallery-section>
-<dfb-map-section></dfb-map-section>
+<!-- <dfb-speakers-section></dfb-speakers-section> -->
+<dfb-video-section [videoInfo]="videoInfo$ | async"></dfb-video-section>
+<!-- <dfb-gallery-section></dfb-gallery-section> -->
+<dfb-links-section [links]="links$ | async"></dfb-links-section>
+<dfb-map-section [mapInfo]="mapInfo$ | async"></dfb-map-section>
 
 

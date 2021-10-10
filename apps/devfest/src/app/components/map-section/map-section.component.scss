@@ -1,6 +1,6 @@
 .map-image {
   display: none;
-  background-image: url('../../../assets/img/map.png');
+  // background-image: url('../../../assets/img/map.jpeg');
   width: 100%;
   height: 640px;
   margin: 70px 0;
@@ -8,9 +8,16 @@
   background-repeat: no-repeat;
   background-size: 100%;
   position: relative;
+  object-fit: cover;
 
   @media (min-width: 640px) {
     display: block;
+  }
+}
+
+.container {
+  @media (min-width: 640px) {
+    transform: translateY(-400px);
   }
 }
 
@@ -24,11 +31,17 @@
     padding: 8px 14px;
   }
 
+  paper-button.cta-button {
+    margin-top: 10px;
+    color: #fff;
+  }
+
   @media (min-width: 640px) {
     margin: 0;
     padding: 24px;
     max-width: 320px;
-    transform: translateY(-300px);
+    transform: translateY(100px);
     border-radius: var(--border-radius);
   }
 }
+

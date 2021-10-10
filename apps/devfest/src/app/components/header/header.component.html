@@ -1,12 +1,43 @@
-<header class="header" [class.transparent]="!scrollTop">
-  <div class="header-toolbar">
-    <a>Logo</a>
-    <div style="flex: 1;"></div>
-    <a>Menu</a>
-    <a>Palestrantes</a>
-    <a>Cronograma</a>
-    <a>Time</a>
-    <a>Cabine de Fotos</a>
-    <button mat-raised-button color="primary">Fazer Inscrição</button>
-  </div>
-</header>
+<mat-sidenav-container class="sidenav-container">
+  <mat-sidenav #drawer 
+      class="sidenav" 
+      fixedInViewport 
+      [autoFocus]="false"
+      [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+      [mode]="(isHandset$ | async) ? 'over' : 'side'"
+      [opened]="false">
+    <mat-toolbar>
+      <a routerLink="/home" class="sidenav-logo"><img src="assets/img/logo.png" /></a>
+    </mat-toolbar>
+    <mat-nav-list>
+      <a href="#" (click)="navigateTo($event, '/home')">Home</a>
+      <a href="#" (click)="navigateTo($event, '/organizacao')">Organização</a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button
+        type="button"
+        aria-label="Toggle sidenav"
+        mat-icon-button
+        (click)="drawer.toggle()"
+        *ngIf="(isHandset$ | async) === true"
+      >
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <a routerLink="/home" class="sidenav-logo" *ngIf="(isHandset$ | async) === false"><img src="assets/img/logo.png" /></a>
+      <div style="flex: 1;"></div>
+      <ng-container *ngIf="(isHandset$ | async) === false">
+        <a routerLink="/home">Home</a>
+        <a routerLink="/organizacao">Organização</a>
+        <!-- <a>Palestrantes</a> -->
+        <!-- <a>Cronograma</a> -->
+        <!-- <a>Cabine de Fotos</a> -->
+      </ng-container>
+      <button mat-raised-button color="primary" (click)="navigateToIndeeds()">Fazer Inscrição</button>
+    </mat-toolbar>
+
+    <ng-content></ng-content>
+    
+  </mat-sidenav-content>
+</mat-sidenav-container>
