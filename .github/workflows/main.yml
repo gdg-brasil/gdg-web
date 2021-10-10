@@ -1,0 +1,25 @@
+name: CI
+on:
+  push:
+    branches: 
+      - main
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@master
+      - uses: actions/setup-node@master
+        with:
+          node-version: '12.x'
+      - run: npm install
+      - run: node_modules/.bin/ng run devfest:build:production
+      - uses: w9jds/firebase-action@master
+        with:
+          args: use devfest-prod
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}
+      - uses: w9jds/firebase-action@master
+        with:
+          args: deploy --only hosting:devfest-prod
+        env:
+          FIREBASE_TOKEN: ${{ secrets.FIREBASE_TOKEN }}

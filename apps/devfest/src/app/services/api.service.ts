@@ -37,6 +37,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAllLinks(): Observable<Link[]> {
+    return of();
     return this.http.get<any[]>(`${this.baseUrl}/links`).pipe(
       map((data: any[]): Link[] => {
         return data.map(link => {
@@ -48,6 +49,7 @@ export class ApiService {
   }
 
   getAllOrganizers(): Observable<Organizer[]> {
+    return of();
     return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
       map((data: any[]): Organizer[] => {
         return data.map(organizer => {
@@ -65,6 +67,7 @@ export class ApiService {
   }
 
   getMapInfo(): Observable<MapInfo> {
+    return of();
     return this.http.get<any[]>(`${this.baseUrl}/maps`).pipe(
       switchMap((data: any[]): Observable<MapInfo> => {
         const mapInfo = data[0];
@@ -75,6 +78,7 @@ export class ApiService {
   }
 
   getVideoInfo(): Observable<VideoInfo> {
+    return of();
     return this.http.get<any[]>(`${this.baseUrl}/videos`).pipe(
       switchMap((data: any[]): Observable<VideoInfo> => {
         const videoInfo = data[0];
