@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap } from 'rxjs/operators';
+import { environment } from '../../environments/environment';
 
 export interface Link {
   title: string;
@@ -32,7 +33,7 @@ export interface VideoInfo {
   providedIn: 'root',
 })
 export class ApiService {
-  baseUrl = 'https://backoffice.devfest.com.br/wp-json/wp/v2';
+  baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
 
@@ -57,9 +58,8 @@ export class ApiService {
           if (chapter) {
             gdg = chapter[0].post_title;
           }
-
           return { ...acf, url: photo.url, gdg } as Organizer;
-        })
+        }).sort((a, b) => a.gdg.localeCompare(b.gdg));
       })
     );
   }

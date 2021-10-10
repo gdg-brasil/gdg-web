@@ -1,17 +1,8 @@
-<!-- <header class="header" [class.transparent]="!scrollTop">
-  <div class="header-toolbar">
-    <a>Logo</a>
-    <div style="flex: 1;"></div>
-    <a>Menu</a>
-    <a>Palestrantes</a>
-    <a>Cronograma</a>
-    <a>Time</a>
-    <a>Cabine de Fotos</a>
-    <button mat-raised-button color="primary">Fazer Inscrição</button>
-  </div>
-</header> -->
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer class="sidenav" fixedInViewport
+  <mat-sidenav #drawer 
+      class="sidenav" 
+      fixedInViewport 
+      [autoFocus]="false"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
       [opened]="false">
@@ -19,8 +10,8 @@
       <a routerLink="/home" class="sidenav-logo"><img src="assets/img/logo.png" /></a>
     </mat-toolbar>
     <mat-nav-list>
-      <a routerLink="/home">Home</a>
-      <a routerLink="/organizacao">Organização</a>
+      <a href="#" (click)="navigateTo($event, '/home')">Home</a>
+      <a href="#" (click)="navigateTo($event, '/organizacao')">Organização</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>

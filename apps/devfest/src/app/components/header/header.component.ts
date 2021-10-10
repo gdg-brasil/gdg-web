@@ -1,5 +1,6 @@
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
-import { Component, HostListener, OnInit } from '@angular/core';
+import { Component, HostListener, OnInit, ViewChild } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
 
@@ -8,8 +9,8 @@ import { map, shareReplay } from 'rxjs/operators';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.scss'],
 })
-export class HeaderComponent implements OnInit {
-  scrollTop: number = window.scrollY;
+export class HeaderComponent {
+  @ViewChild('drawer') drawer: any;
   isHandset$: Observable<boolean> = this.breakpointObserver
     .observe(Breakpoints.Handset)
     .pipe(
@@ -17,15 +18,16 @@ export class HeaderComponent implements OnInit {
       shareReplay()
     );
 
-  constructor(private breakpointObserver: BreakpointObserver) {}
+  constructor(
+    private breakpointObserver: BreakpointObserver,
+    private router: Router
+  ) {}
 
-  @HostListener("window:scroll", [])
-  onWindowScroll() {
-    this.scrollTop = window.scrollY;
-  }
+  navigateTo(event: Event, path: string): void {
+    event.preventDefault();
 
-  ngOnInit() {
-    console.log(this.scrollTop);
+    this.drawer.close();
+    this.router.navigateByUrl(path);
   }
 
   navigateToIndeeds(): void {
