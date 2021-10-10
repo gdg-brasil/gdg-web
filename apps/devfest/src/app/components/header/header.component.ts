@@ -24,9 +24,7 @@ export class HeaderComponent implements OnInit {
     this.scrollTop = window.scrollY;
   }
 
-  ngOnInit() {
-    console.log(this.scrollTop);
-  }
+  ngOnInit() {}
 
   navigateToIndeeds(): void {
     window.open('https://www.sympla.com.br/devfest-brasil-2021__1221956', '_blank');
