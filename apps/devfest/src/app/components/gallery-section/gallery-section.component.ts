@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { GaleryImage } from '../../services/api.service';
 
 @Component({
   selector: 'dfb-gallery-section',
@@ -6,7 +7,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./gallery-section.component.scss'],
 })
 export class GallerySectionComponent {
-  images = [
+  @Input() galeryImages!: GaleryImage[] | null;
+
+  /*images = [
     'gallery-1.jpg',
     'gallery-2.jpg',
     'gallery-3.jpg',
@@ -15,5 +18,5 @@ export class GallerySectionComponent {
     'gallery-6.jpg',
     'gallery-7.jpg',
     'gallery-8.jpg'
-  ]
+  ]*/
 }

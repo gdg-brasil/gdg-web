@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap, } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
 
 export interface Link {
@@ -27,6 +27,10 @@ export interface MapInfo {
 
 export interface VideoInfo {
   embedded_code: string;
+}
+
+export interface GaleryImage {
+  url: string;
 }
 
 @Injectable({
@@ -82,6 +86,11 @@ export class ApiService {
         return of({ ...acf } as VideoInfo);
       })
     );
+  }
+
+  getAllGaleryImages(): Observable<Array<GaleryImage>> {
+    const imagePromises = new Array<GaleryImage>(8).fill({ url: 'https://placekitten.com/g/800/600' });
+    return of(imagePromises)
   }
 
 
