@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Link } from '../../services/api.service';
+import { Link } from '../../services/api.model';
 
 @Component({
   selector: 'dfb-links-section',
