@@ -1,9 +1,44 @@
-<div class="page">
-  <div class="container hero">
-    <h2 class="container-title">{{title}}</h2>
-    <p>Ouça os Googlers, Parceiros e Palestrantes Convidados que estão construindo o futuro da nuvem. Verifique sempre que adicionarmos mais palestrantes, incluindo nossos clientes e parceiros.
+<div class='page'>
+  <div class='container hero'>
+    <h2 class='container-title'>{{title}}</h2>
+    <p>Ouça os Googlers, Parceiros e Palestrantes Convidados que estão construindo o futuro da nuvem. Verifique sempre
+      que adicionarmos mais palestrantes, incluindo nossos clientes e parceiros.
     </p>
   </div>
-<dfb-footer></dfb-footer>
+
+  <div class='container grid'>
+    <div class='speaker card'
+         *ngFor='let speaker of speakers$ | async'
+         (click)='openSpeakerDialog(speaker)'
+    >
+      <div class='relative'>
+        <div class='photo'>
+          <img [src]='speaker.photoUrl' alt='speaker photo' loading='lazy' />
+        </div>
+        <div class='badges'>
+          <a target='_blank' rel='noopener noreferrer'
+             title='Google Developer Expert'
+             *ngIf='speaker.gde'
+             href='https://developers.google.com/community/experts/directory'
+             class='badge gde-b'
+          ></a>
+          <a
+            *ngIf='speaker.googler'
+            title='Googler'
+            href='#'
+            (click)='false'
+            class='badge google-b'
+          ></a>
+        </div>
+        <div class='description'>
+          <h3 class='name truncate'>{{speaker.name}}</h3>
+          <div class='origin'>{{speaker.company}}</div>
+          <p>{{speaker.bio}}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
 
 
