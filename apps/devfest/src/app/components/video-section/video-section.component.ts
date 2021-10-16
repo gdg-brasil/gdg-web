@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
-import { VideoInfo } from '../../services/api.service';
+import { VideoInfo } from '../../services/api.model';
 
 @Component({
   selector: 'dfb-video-section',

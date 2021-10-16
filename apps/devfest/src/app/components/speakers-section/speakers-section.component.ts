@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Speaker } from '@gdg-web/api-interfaces';
+import { Speaker } from '../../services/api.model';
 
 @Component({
   selector: 'dfb-speakers-section',
@@ -8,6 +8,9 @@ import { Speaker } from '@gdg-web/api-interfaces';
 })
 export class SpeakersSectionComponent {
   @Input() speakers!: Speaker[] | null;
-  @Input() organizer!: any | null;
   title: string = 'Palestrantes';
+
+  get featuredSpeakers(): Speaker[] | null {
+    return this.speakers?.filter(speaker => speaker.featured) || [];
+  }
 }

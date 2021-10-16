@@ -23,11 +23,8 @@ export class HeaderComponent {
     private router: Router
   ) {}
 
-  navigateTo(event: Event, path: string): void {
-    event.preventDefault();
-
+  closeNavbar(): void {
     this.drawer.close();
-    this.router.navigateByUrl(path);
   }
 
   navigateToIndeeds(): void {
