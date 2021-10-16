@@ -5,7 +5,7 @@
     <div class="speaker" *ngFor="let organizer of organizers">
       <div class="relative">
         <div class="photo">
-          <img [src]="organizer.url" loading="lazy" />
+          <img [src]="organizer.photoUrl" loading="lazy" />
         </div>
         <div class="description">
           <h3 class="name truncate">{{organizer.name}}</h3>

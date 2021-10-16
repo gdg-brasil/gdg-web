@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { Organizer } from '../../services/api.model';
 
 @Component({
   selector: 'dfb-organizers-section',
@@ -6,6 +7,6 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./organizers-section.component.scss'],
 })
 export class OrganizersSectionComponent {
-  @Input() organizers!: any[] | null;
+  @Input() organizers!: Organizer[] | null;
   title: string = 'Organizadores';
 }

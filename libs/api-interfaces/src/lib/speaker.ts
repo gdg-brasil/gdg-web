@@ -3,10 +3,9 @@ import { Social } from './social';
 
 export interface Speaker {
   name: string;
-  photoUrl: string;
-  bio: string;
   company: string;
-  companyLogoUrl?: string;
+  bio: string;
+  photoUrl: string;
   order?: number;
   title?: string;
   country?: string;
