@@ -6,12 +6,12 @@ import { MaterialModule } from '@gdg-web/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { 
-  HomePageComponent, 
+import {
+  HomePageComponent,
   SpeakersPageComponent,
   TeamPageComponent
 } from './pages';
-import { 
+import {
   AboutSectionComponent,
   FooterComponent,
   GallerySectionComponent,
@@ -29,7 +29,7 @@ const COMPONENTS = [
   FooterComponent,
   AboutSectionComponent,
   GallerySectionComponent,
-  HeroSectionComponent, 
+  HeroSectionComponent,
   MapSectionComponent,
   OrganizersSectionComponent,
   SpeakersSectionComponent,
