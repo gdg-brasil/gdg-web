@@ -36,4 +36,5 @@ export interface Speaker {
   gde: boolean;
   googler: boolean;
   featured: boolean;
+  position: string;
 }

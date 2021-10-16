@@ -10,21 +10,21 @@
         <div class="badges">
           <a target="_blank" rel="noopener noreferrer"
             title="Google Developer Expert"
-            *ngIf="speaker.gde" 
+            *ngIf="speaker.gde"
             href="https://developers.google.com/community/experts/directory"
             class="badge gde-b"
           ></a>
-          <a 
-            *ngIf="speaker.googler" 
+          <a
+            *ngIf="speaker.googler"
             title="Googler"
-            href="#" 
+            href="#"
             (click)="false"
             class="badge google-b"
           ></a>
         </div>
         <div class="description">
           <h3 class="name truncate">{{speaker.name}}</h3>
-          <div class="origin">{{speaker.company}}</div>
+          <div class='origin'>{{speaker.position}} @ {{speaker.company}}</div>
         </div>
       </div>
     </div>
