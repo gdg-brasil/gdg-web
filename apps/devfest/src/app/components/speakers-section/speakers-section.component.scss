@@ -42,6 +42,7 @@
     background-size: cover;
     background-position: center center;
     background-repeat: no-repeat;
+    object-fit: cover;
 
     @media (min-width: 640px) {
       width: 128px;
