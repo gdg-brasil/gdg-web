@@ -3,31 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap, } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-
-export interface Link {
-  title: string;
-  description: string;
-  link: string;
-  cta: string;
-}
-
-export interface Organizer {
-  name: string;
-  url: string;
-  gdg: string;
-}
-
-
-export interface MapInfo {
-  url: string;
-  alt: string;
-  title: string;
-  description: string;
-}
-
-export interface VideoInfo {
-  embedded_code: string;
-}
+import { Link, MapInfo, Organizer, Speaker, VideoInfo } from './api.model';
 
 export interface GaleryImage {
   url: string;
@@ -40,6 +16,19 @@ export class ApiService {
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
+
+  getAllSpeakers(): Observable<Speaker[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/speakers`).pipe(
+      map((data: any[]): Speaker[] => {
+        console.log(data);
+        return data.map(speaker => {
+          const { acf } = speaker;
+          const { photo } = acf;
+          return { ...acf, photoUrl: photo.url } as Speaker;
+        });
+      })
+    );
+  }
 
   getAllLinks(): Observable<Link[]> {
     return this.http.get<any[]>(`${this.baseUrl}/links`).pipe(
@@ -62,7 +51,7 @@ export class ApiService {
           if (chapter) {
             gdg = chapter[0].post_title;
           }
-          return { ...acf, url: photo.url, gdg } as Organizer;
+          return { ...acf, photoUrl: photo.url, gdg } as Organizer;
         }).sort((a, b) => a.gdg.localeCompare(b.gdg));
       })
     );

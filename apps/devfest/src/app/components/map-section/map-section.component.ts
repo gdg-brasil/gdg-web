@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { MapInfo } from '../../services/api.service';
+import { MapInfo } from '../../services/api.model';
 
 @Component({
   selector: 'dfb-map-section',
