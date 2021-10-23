@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Speaker } from '../../services/api.model';
 import { ApiService } from '../../services/api.service';
+import { SpeakersDialogComponent } from './speakers-dialog/speakers-dialog.component';
 
 @Component({
   selector: 'dfb-speakers-page',
@@ -18,8 +19,8 @@ export class SpeakersPageComponent {
   ) {}
 
   openSpeakerDialog(speaker: Speaker) {
-    // this.dialog.open(SpeakersDialogComponent, {
-    //   data: speaker
-    // })
+    this.dialog.open(SpeakersDialogComponent, {
+      data: speaker
+    })
   }
 }
