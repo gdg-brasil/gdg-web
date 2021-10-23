@@ -20,7 +20,8 @@ export class SpeakersPageComponent {
 
   openSpeakerDialog(speaker: Speaker) {
     this.dialog.open(SpeakersDialogComponent, {
-      data: speaker
+      data: speaker,
+      autoFocus: false
     })
   }
 }
