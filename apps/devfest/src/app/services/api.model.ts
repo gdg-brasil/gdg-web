@@ -32,6 +32,7 @@ export interface Speaker {
   github: string;
   instagram: string;
   linkedin: string;
+  twitter: string;
   site: string;
   gde: boolean;
   googler: boolean;
