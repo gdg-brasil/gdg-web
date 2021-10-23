@@ -118,3 +118,12 @@ paper-button {
   display: -webkit-box;
   -webkit-line-clamp: 1;
 }
+
+.cdk-global-overlay-wrapper {
+  width: 100% !important;
+}
+
+.mat-dialog-container {
+  width: 720px !important;
+  padding: 0 !important;
+}

@@ -9,6 +9,12 @@ export interface Organizer {
   name: string;
   photoUrl: string;
   gdg: string;
+  facebook: string;
+  github: string;
+  instagram: string;
+  linkedin: string;
+  twitter: string;
+  site: string;
 }
 
 
@@ -28,13 +34,14 @@ export interface Speaker {
   company: string;
   photoUrl: string;
   bio: string;
-  facebook: string;
-  github: string;
-  instagram: string;
-  linkedin: string;
-  site: string;
   gde: boolean;
   googler: boolean;
   featured: boolean;
   position: string;
+  facebook: string;
+  github: string;
+  instagram: string;
+  linkedin: string;
+  twitter: string;
+  site: string;
 }
