@@ -11,7 +11,7 @@ export class HomePageComponent {
   links$ = this.api.getAllLinks();
   mapInfo$ = this.api.getMapInfo();
   videoInfo$ = this.api.getVideoInfo();
+  galeryImages$ = this.api.getAllGaleryImages();
 
-  constructor(private api: ApiService) {}
-  
+  constructor(private api: ApiService) { }
 }
