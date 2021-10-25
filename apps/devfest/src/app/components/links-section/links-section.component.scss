@@ -2,6 +2,10 @@
   display: flex;
 }
 
+#link-section {
+  padding: 70 0px;
+}
+
 .image-wrapper {
   display: none;
   @media (min-width: 640px) {

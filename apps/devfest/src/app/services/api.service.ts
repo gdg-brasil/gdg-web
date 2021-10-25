@@ -3,11 +3,9 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap, } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Link, MapInfo, Organizer, Speaker, VideoInfo } from './api.model';
+import { Link, MapInfo, Organizer, Speaker, VideoInfo, GaleryInfo } from './api.model';
 
-export interface GaleryImage {
-  url: string;
-}
+
 
 @Injectable({
   providedIn: 'root',
@@ -20,7 +18,6 @@ export class ApiService {
   getAllSpeakers(): Observable<Speaker[]> {
     return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
       map((data: any[]): Speaker[] => {
-        console.log(data);
         return data.map(speaker => {
           const { acf } = speaker;
           const { photo } = acf;
@@ -77,9 +74,15 @@ export class ApiService {
     );
   }
 
-  getAllGaleryImages(): Observable<Array<GaleryImage>> {
-    const imagePromises = new Array<GaleryImage>(8).fill({ url: 'https://placekitten.com/g/800/600' });
-    return of(imagePromises)
+  getAllGaleryImages(): Observable<GaleryInfo[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/gallery`).pipe(
+      map((data: any[]): GaleryInfo[] => {
+        return data.map((_data) => {
+
+          const url = _data?.acf?.image?.sizes?.large;
+          return { url } as GaleryInfo;
+        }).map(el => el);
+      }));
   }
 
 

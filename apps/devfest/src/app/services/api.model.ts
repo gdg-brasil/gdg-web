@@ -45,3 +45,7 @@ export interface Speaker {
   twitter: string;
   site: string;
 }
+
+export interface GaleryInfo {
+  url: string;
+}
