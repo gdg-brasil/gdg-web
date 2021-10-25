@@ -1,36 +1,55 @@
-.team-wrapper {
+.hero {
+  p {
+    margin: 30px 0;
+    max-width: 600px;
+    font-size: 16px;
+    line-height: 26px;
+  }
+}
+
+.grid {
   display: grid;
   grid-template-columns: 1fr;
-  grid-gap: 24px;
-  margin-bottom: 32px;
+  min-height: 80%;
+  grid-gap: 16px;
 
   @media (min-width: 640px) {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  @media (min-width: 1024px) {
+  @media (min-width: 810px) {
     grid-template-columns: repeat(3, 1fr);
   }
-}
-
-.member {
-  padding: 16px 0;
-  min-width: 300px;
-  display: flex;
-  flex-direction: row;
-
-  @media (min-width: 640px) {
-    padding: 32px 0;
+  
+  @media (min-width: 1024px) {
+    grid-template-columns: repeat(4, 1fr);
   }
 }
+
+.speaker {
+  padding: 32px 24px;
+  background: var(--primary-background-color);
+  text-align: center;
+  transition: box-shadow var(--animation);
+}
+
+.card {
+  background-color: var(--default-background-color);
+  box-shadow: var(--box-shadow);
+  border-radius: var(--border-radius);
+  transition: box-shadow var(--animation);
+  // cursor: pointer;
+}
+
 
 .photo {
   width: 72px;
   height: 72px;
-  background-color: #e8e8e8;
+  background-color: var(--accent-color);
   border-radius: 50%;
   overflow: hidden;
   transform: translateZ(0);
+  margin: 0 auto;
 
   @media (min-width: 640px) {
     width: 128px;
@@ -133,36 +152,23 @@
 
 .description {
   color: var(--primary-text-color);
-  margin-left: 16px;
-  padding-left: 6px;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+
+  p {
+    margin-top: 16px;
+  }
 
   .name {
-    line-height: 28px;
-    font-size: 24px;
-    font-weight: 400;
-    margin: 0;
+      margin-top: 20px;
+      line-height: 1.1;
+
+      @media (min-width: 640px) {
+          font-size: 24px;
+      }
   }
 
   .origin {
-    font-size: 16px;
-    margin: 0;
-  }
-}
-
-.container {
-  margin-top: 50px;
-}
-
-.contacts {
-
-  img.icon {
-    filter: invert(22%) sepia(56%) saturate(2547%) hue-rotate(247deg) brightness(97%) contrast(92%);
-    opacity: .9;
-    width: 20px;
-    height: 20px;
-    padding: 6px;
+    margin-top: 4px;
+    font-size: 14px;
+    line-height: 1.1;
   }
 }

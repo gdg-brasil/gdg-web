@@ -32,27 +32,8 @@
         </div>
         <div class='description'>
           <h3 class='name truncate'>{{speaker.name}}</h3>
-          <div class='origin'>
-            {{speaker.position ? speaker.position : 'Working'}} 
-            @ {{speaker.company ? speaker.company : 'Some Company'}}</div>
+          <div class='origin'>{{speaker.position}} @ {{speaker.company}}</div>
           <p>{{speaker.bio}}</p>
-        </div>
-        <div class='contacts'>
-          <a target="_blank" rel="noopener noreferrer" [href]="speaker.facebook" *ngIf="speaker.facebook">
-            <img class='icon' src='assets/svg/facebook-square-brands.svg' alt='Logo Facebook'>
-          </a>
-          <a target="_blank" rel="noopener noreferrer" [href]="speaker.instagram" *ngIf="speaker.instagram">
-            <img class='icon' src='assets/svg/instagram-brands.svg' alt='Logo Instagram'>
-          </a>
-          <a target="_blank" rel="noopener noreferrer" [href]="speaker.github" *ngIf="speaker.github">
-            <img class='icon' src='assets/svg/github-brands.svg' alt='Logo Instagram'>
-          </a>
-          <a target="_blank" rel="noopener noreferrer" [href]="speaker.linkedin" *ngIf="speaker.linkedin">
-            <img class='icon' src='assets/svg/linkedin-in-brands.svg' alt='Logo Instagram'>
-          </a>
-          <a target="_blank" rel="noopener noreferrer" [href]="speaker.twitter" *ngIf="speaker.twitter">
-            <img class='icon' src='assets/svg/twitter-brands.svg' alt='Logo Instagram'>
-          </a>
         </div>
       </div>
     </div>

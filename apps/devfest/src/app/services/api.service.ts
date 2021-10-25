@@ -18,7 +18,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAllSpeakers(): Observable<Speaker[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/speakers`).pipe(
+    return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
       map((data: any[]): Speaker[] => {
         console.log(data);
         return data.map(speaker => {
