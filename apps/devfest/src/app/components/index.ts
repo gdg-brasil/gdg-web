@@ -9,3 +9,4 @@ export * from './map-section/map-section.component';
 export * from './organizers-section/organizers-section.component';
 export * from './speakers-section/speakers-section.component';
 export * from './video-section/video-section.component';
+export * from './sponsors-section/sponsors-section.component';

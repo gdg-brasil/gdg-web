@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, switchMap, tap, } from 'rxjs/operators';
+import { map, switchMap, tap, reduce, } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Link, MapInfo, Organizer, Speaker, VideoInfo, GaleryInfo } from './api.model';
+import { Link, MapInfo, Organizer, Speaker, VideoInfo, GaleryInfo, SponsorsByCategory, Sponsor } from './api.model';
 
 
 
@@ -85,6 +85,36 @@ export class ApiService {
       }));
   }
 
+
+  getAllSponsors(): Observable<SponsorsByCategory[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/sponsors`).pipe(
+      map((data: any[],): SponsorsByCategory[] => {
+        return data.reduce((_acc: SponsorsByCategory[], _actual) => {
+          const _temp = _actual?.acf;
+          const _sponsor = {
+            name: _temp?.name,
+            url: _temp?.site,
+            logoUrl: _temp?.logo?.sizes?.medium,
+            category: _temp?.sponsor_type
+          } as Sponsor;
+
+          const _categoryFinded = _acc.findIndex((_category: SponsorsByCategory) => {
+            _category.name == _sponsor.category
+          });
+
+          if (_categoryFinded > -1) {
+            _acc[_categoryFinded].sponsors.push(_sponsor)
+          } else {
+            _acc.push({
+              name: _sponsor.category,
+              sponsors: [_sponsor],
+            })
+          }
+          console.log('acc', _acc)
+          return _acc;
+        }, new Array<SponsorsByCategory>());
+      }));
+  }
 
 
   // getOrganizerById(id: number): Observable<any> {

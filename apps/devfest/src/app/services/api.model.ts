@@ -49,3 +49,20 @@ export interface Speaker {
 export interface GaleryInfo {
   url: string;
 }
+
+export interface Sponsor {
+  url: string;
+  name: string;
+}
+
+export interface Sponsor {
+  url: string;
+  name: string;
+  logoUrl: string;
+  category: string;
+}
+
+export interface SponsorsByCategory {
+  name: string;
+  sponsors: Sponsor[]
+}
