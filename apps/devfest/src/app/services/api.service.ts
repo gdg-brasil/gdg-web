@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap, } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Link, MapInfo, Organizer, Speaker, VideoInfo, GaleryInfo } from './api.model';
+import { Link, MapInfo, Organizer, Speaker, VideoInfo, GaleryInfo, Track } from './api.model';
 
 
 
@@ -84,6 +84,15 @@ export class ApiService {
         }).map(el => el);
       }));
   }
+
+  getTracks(): Observable<Track> {
+    return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
+      switchMap((data: any[]): Observable<Track> => {
+        const track = data[0];
+        const { acf } = track;
+        return of({ ...acf } as Track);
+      })
+    );
 
 
 

@@ -49,3 +49,15 @@ export interface Speaker {
 export interface GaleryInfo {
   url: string;
 }
+
+export interface Track {
+  name: string;
+  date: string;
+  embedded_code: string;
+}
+
+export interface Scheduler {
+  start: string;
+  end: string;
+  embedded_code: string;
+}
