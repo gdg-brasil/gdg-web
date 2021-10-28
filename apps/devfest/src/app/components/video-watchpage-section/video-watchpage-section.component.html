@@ -1,0 +1,29 @@
+<div class="container-fluid">  
+  <div class="row"  *ngFor="let track of tracks">
+    <h2 class="container-title">Trilha {{track.name}}</h2>
+  
+    <div class="col-lg-6 m-auto actual-youtube">
+      <iframe 
+        width="90%"
+        height="auto"
+        [src]=safeUrl(track.embedded_code) 
+        class="video" 
+        frameborder="0" 
+        allow="accelerometer; autoplay; clipboard-write; encrypted-media; hyroscope; picture-in-picture" 
+        allowfullscreen>
+      </iframe>
+    </div>
+    <div class="col-lg-6 m-auto">
+      <div class="content-wrapper align-left actual-youtube-chat">
+        <iframe 
+          allowfullscreen="" 
+          frameborder="0" 
+          width="480" 
+          loading="lazy" 
+          class="lazyload chat-youtube" 
+          data-src="https://www.youtube.com/live_chat?v=lEWUxrYAkn0&amp;embed_domain=localhost:4200">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</div>

@@ -3,7 +3,7 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap, tap, } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Link, MapInfo, Organizer, Speaker, VideoInfo, GaleryInfo, Track } from './api.model';
+import { Link, MapInfo, Organizer, Speaker, GaleryInfo, Track, Schedule } from './api.model';
 
 
 
@@ -39,6 +39,7 @@ export class ApiService {
   }
 
   getAllOrganizers(): Observable<Organizer[]> {
+    // return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
     return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
       map((data: any[]): Organizer[] => {
         return data.map(organizer => {
@@ -64,12 +65,12 @@ export class ApiService {
     );
   }
 
-  getVideoInfo(): Observable<VideoInfo> {
+  getVideoInfo(): Observable<Track> {
     return this.http.get<any[]>(`${this.baseUrl}/videos`).pipe(
-      switchMap((data: any[]): Observable<VideoInfo> => {
+      switchMap((data: any[]): Observable<Track> => {
         const videoInfo = data[0];
         const { acf } = videoInfo;
-        return of({ ...acf } as VideoInfo);
+        return of({ ...acf } as Track);
       })
     );
   }
@@ -85,15 +86,41 @@ export class ApiService {
       }));
   }
 
-  getTracks(): Observable<Track> {
+  // getAllTracks(): Observable<Track[]> {
+  //   return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
+  //     map((data: any[]): Track[] => {
+  //       return data.map(track => {
+  //         const { acf } = track;
+  //         const { name, date, embedded_code } = acf;
+          
+  //         return { name, date, embedded_code } as Track;
+  //       }).sort((a, b) => a.name.localeCompare(b.name));
+  //     })
+  //   );
+  // }
+
+  getAllTracks(): Observable<Track[]> {
     return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
-      switchMap((data: any[]): Observable<Track> => {
-        const track = data[0];
-        const { acf } = track;
-        return of({ ...acf } as Track);
+      map((data: any[]): Track[] => {
+        return data.map(track => {
+          const { acf } = track;
+          const { name, date, embedded_code, scheduler } = acf;
+          
+          const schedule = scheduler.map((s: any): Schedule => {
+              const { start, end, speaker, deck } = s;
+              const speakerName = speaker[0]?.acf?.name;
+              const lectureTitle = deck[0]?.post_title;
+  
+              return {start, end, speakerName, lectureTitle} as Schedule
+          });
+          
+          return { name, date, embedded_code, schedule } as Track;
+        });
       })
     );
   }
+
+  
 
 
 
