@@ -17,15 +17,14 @@ export class TracksSectionComponent implements OnChanges {
   }
 
   isSelectedTrack(track: Track): boolean {
-    if (!this.tracks?.length) {
-      return false;
-    }
-    return this.tracks?.some(t => t.name === track.name);
+    return track.name === this.selectedTrack?.name;
   }
 
   selectTrack(event: Event, track: Track): void {
     event.preventDefault();
 
     this.selectedTrack = track;
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+
   }
 }

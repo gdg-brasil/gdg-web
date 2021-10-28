@@ -1,0 +1,10 @@
+<div class="container">
+  <h2>{{track?.name ? 'Trilha ' + track?.name : ''}}</h2>
+  <iframe 
+    [src]="safeUrl" 
+    class="video" 
+    frameborder="0" 
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; hyroscope; picture-in-picture" 
+    allowfullscreen>
+  </iframe>
+</div>

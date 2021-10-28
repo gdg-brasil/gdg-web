@@ -23,7 +23,7 @@ import {
   OrganizersSectionComponent,
   SpeakersSectionComponent,
   VideoSectionComponent,
-  VideoWatchpageSectionComponent,
+  VideoTrackSectionComponent,
   TracksSectionComponent,
   ScheduleSectionComponent
 } from './components';
@@ -38,8 +38,8 @@ const COMPONENTS = [
   OrganizersSectionComponent,
   SpeakersSectionComponent,
   VideoSectionComponent,
+  VideoTrackSectionComponent,
   LinksSectionComponent,
-  VideoWatchpageSectionComponent,
   TracksSectionComponent,
   ScheduleSectionComponent
 ]

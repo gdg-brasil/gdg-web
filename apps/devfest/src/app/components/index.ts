@@ -9,6 +9,6 @@ export * from './map-section/map-section.component';
 export * from './organizers-section/organizers-section.component';
 export * from './speakers-section/speakers-section.component';
 export * from './video-section/video-section.component';
-export * from './video-watchpage-section/video-watchpage-section.component';
+export * from './video-track-section/video-track-section.component';
 export * from './tracks-section/tracks-section.component';
 export * from './schedule-section/schedule-section.component';
