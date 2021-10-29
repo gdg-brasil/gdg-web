@@ -1,16 +1,33 @@
 <div class="container">
   <h2 class="container-title">{{title}}</h2>
 
-  <div class="speakers-wrapper">
-    <div class="speaker" *ngFor="let organizer of organizers">
-      <div class="relative">
-        <div class="photo">
-          <img [src]="organizer.url" loading="lazy" />
-        </div>
-        <div class="description">
-          <h3 class="name truncate">{{organizer.name}}</h3>
-          <p>{{organizer.gdg}}</p>
-          <div class="origin"></div>
+  <div class="team-wrapper">
+    <div class="member" *ngFor="let organizer of organizers">
+      <div class="photo">
+        <img [src]="organizer.photoUrl" loading="lazy" />
+      </div>
+      <div class="description">
+        <h3 class="name truncate">{{organizer.name}}</h3>
+        <p class="origin">{{organizer.gdg}}</p>
+        <div class='contacts'>
+          <a target="_blank" rel="noopener noreferrer" [href]="organizer.facebook" *ngIf="organizer.facebook">
+            <img class='icon' src='assets/svg/facebook-square-brands.svg' alt='Logo Facebook'>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" [href]="organizer.instagram" *ngIf="organizer.instagram">
+            <img class='icon' src='assets/svg/instagram-brands.svg' alt='Logo Instagram'>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" [href]="organizer.github" *ngIf="organizer.github">
+            <img class='icon' src='assets/svg/github-brands.svg' alt='Logo Instagram'>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" [href]="organizer.linkedin" *ngIf="organizer.linkedin">
+            <img class='icon' src='assets/svg/linkedin-in-brands.svg' alt='Logo Instagram'>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" [href]="organizer.twitter" *ngIf="organizer.twitter">
+            <img class='icon' src='assets/svg/twitter-brands.svg' alt='Logo Instagram'>
+          </a>
+          <a target="_blank" rel="noopener noreferrer" [href]="organizer.site" *ngIf="organizer.site">
+            <img class='icon' src='assets/svg/link-solid.svg' alt='Logo Site'>
+          </a>
         </div>
       </div>
     </div>

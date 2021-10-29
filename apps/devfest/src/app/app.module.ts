@@ -6,12 +6,12 @@ import { MaterialModule } from '@gdg-web/material';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
-import { 
-  HomePageComponent, 
+import {
+  HomePageComponent,
   SpeakersPageComponent,
   TeamPageComponent
 } from './pages';
-import { 
+import {
   AboutSectionComponent,
   FooterComponent,
   GallerySectionComponent,
@@ -21,7 +21,8 @@ import {
   MapSectionComponent,
   OrganizersSectionComponent,
   SpeakersSectionComponent,
-  VideoSectionComponent
+  VideoSectionComponent,
+  SponsorsSectionComponent
 } from './components';
 
 const COMPONENTS = [
@@ -29,12 +30,13 @@ const COMPONENTS = [
   FooterComponent,
   AboutSectionComponent,
   GallerySectionComponent,
-  HeroSectionComponent, 
+  HeroSectionComponent,
   MapSectionComponent,
   OrganizersSectionComponent,
   SpeakersSectionComponent,
   VideoSectionComponent,
-  LinksSectionComponent
+  LinksSectionComponent,
+  SponsorsSectionComponent
 ]
 
 const PAGES = [
@@ -60,4 +62,4 @@ const PAGES = [
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }
