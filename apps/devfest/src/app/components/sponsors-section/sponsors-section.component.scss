@@ -12,6 +12,7 @@
     grid-template-columns: 500px;
     grid-template-rows: repeat(3, auto);
     gap: 20px;
+    justify-content: center;
 
     @media (min-width: 640px) {
       grid-template-columns: repeat(5, 1fr);
