@@ -14,6 +14,13 @@
           "gdg-brasil-devfest"
         ]
       }
+    },
+  "devfestbrasil2020": {
+    "hosting": {
+      "devfest-prod": [
+        "devfestbrasil2020"
+      ]
+      }
     }
   }
 }
