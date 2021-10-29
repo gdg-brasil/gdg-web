@@ -12,3 +12,4 @@ export * from './video-section/video-section.component';
 export * from './video-track-section/video-track-section.component';
 export * from './tracks-section/tracks-section.component';
 export * from './schedule-section/schedule-section.component';
+export * from './sponsors-section/sponsors-section.component';

@@ -25,7 +25,8 @@ import {
   VideoSectionComponent,
   VideoTrackSectionComponent,
   TracksSectionComponent,
-  ScheduleSectionComponent
+  ScheduleSectionComponent,
+  SponsorsSectionComponent
 } from './components';
 
 const COMPONENTS = [
@@ -41,7 +42,9 @@ const COMPONENTS = [
   VideoTrackSectionComponent,
   LinksSectionComponent,
   TracksSectionComponent,
-  ScheduleSectionComponent
+  ScheduleSectionComponent,
+  LinksSectionComponent,
+  SponsorsSectionComponent
 ]
 
 const PAGES = [
@@ -68,4 +71,4 @@ const PAGES = [
   bootstrap: [AppComponent],
   schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
-export class AppModule {}
+export class AppModule { }
