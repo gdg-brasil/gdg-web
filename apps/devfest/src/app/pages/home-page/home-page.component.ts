@@ -12,6 +12,7 @@ export class HomePageComponent {
   mapInfo$ = this.api.getMapInfo();
   videoInfo$ = this.api.getVideoInfo();
   galeryImages$ = this.api.getAllGaleryImages();
+  sponsors$ = this.api.getAllSponsors();
 
   constructor(private api: ApiService) { }
 }
