@@ -64,5 +64,6 @@ export interface Sponsor {
 
 export interface SponsorsByCategory {
   name: string;
+  order: number;
   sponsors: Sponsor[]
 }

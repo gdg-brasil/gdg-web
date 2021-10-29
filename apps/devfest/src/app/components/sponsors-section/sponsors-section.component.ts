@@ -7,5 +7,5 @@ import { SponsorsByCategory } from '../../services/api.model';
     styleUrls: ['./sponsors-section.component.scss'],
 })
 export class SponsorsSectionComponent {
-    //  @Input() sponsors!: SponsorsByCategory[] | null;
+    @Input() sponsorsByCategory!: SponsorsByCategory[] | null;
 }

@@ -1,0 +1,26 @@
+
+
+.sponsor-wrapper {
+    margin: 28px auto;
+    display: grid;
+    width: 100%;
+    max-height: 750px;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, auto);
+    grid-gap: 8px;
+
+
+    .sponsor-item {
+        height: 84px;
+        width: 100%;
+    }
+
+    .sponsor-image {
+        width: 100%;
+        background-size: contain; 
+        background-position: center center;
+        background-repeat: no-repeat;
+        vertical-align: middle;
+        padding: 34px 0;
+    }
+}

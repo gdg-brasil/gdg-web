@@ -1,6 +1,18 @@
-<div class="container" style="background-color: red;">
+<div class="container">
     <div>
-
-        <h2>"Sponsors"</h2>
+        <h2 class="container-title"> Patrocinadores</h2>
+        <div *ngFor="let category of sponsorsByCategory">
+            <h3 class="container-title">{{category.name}}</h3>
+            <div class="sponsor-wrapper">
+                <div class="sponsor-item" *ngFor="let sponsor of category.sponsors">
+                    <a target="_blank" [href]="sponsor.url">
+                        <div class="sponsor-image" role="img"
+                            [ngStyle]="{'background-image': 'url(&quot;'+sponsor.logoUrl+'&quot;)'}">
+                            &nbsp;
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

@@ -95,11 +95,12 @@ export class ApiService {
             name: _temp?.name,
             url: _temp?.site,
             logoUrl: _temp?.logo?.sizes?.medium,
-            category: _temp?.sponsor_type
+            category: _temp?.type_name
+            // sponsor_type
           } as Sponsor;
 
           const _categoryFinded = _acc.findIndex((_category: SponsorsByCategory) => {
-            _category.name == _sponsor.category
+            return _category.name == _sponsor.category
           });
 
           if (_categoryFinded > -1) {
@@ -107,12 +108,13 @@ export class ApiService {
           } else {
             _acc.push({
               name: _sponsor.category,
+              order: _temp.sponsor_type,
               sponsors: [_sponsor],
             })
           }
           console.log('acc', _acc)
           return _acc;
-        }, new Array<SponsorsByCategory>());
+        }, new Array<SponsorsByCategory>()).sort((el, ol) => el.order - ol.order).filter((el: SponsorsByCategory) => el.name != 'Todos');
       }));
   }
 
