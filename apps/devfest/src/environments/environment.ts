@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  apiUrl: 'https://backoffice.devfest.com.br/wp-json/wp/v2'
+  apiUrl: 'https://backoffice.devfest.com.br/wp-json/acf/v3'
 };
 
 /*

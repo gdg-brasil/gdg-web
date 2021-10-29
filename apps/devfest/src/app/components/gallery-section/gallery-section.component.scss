@@ -1,3 +1,7 @@
+#gallery-section {
+  padding: 70 0px;
+}
+
 .photos-grid {
   margin: 64px auto;
   display: grid;
@@ -10,10 +14,15 @@
   grid-gap: 2px;
 
   .grid-item {
-    height: 240px;
+    width: 100%;
+    object-fit: cover;
+    height: 260px;
 
     &:nth-child(4) {
-      grid-area: 4 / 3 / 4 / 3;
+      
+      @media (min-width: 640px) {
+        grid-area: 4 / 3 / 4 / 3;
+      }
     }
 
     &:nth-child(5) {

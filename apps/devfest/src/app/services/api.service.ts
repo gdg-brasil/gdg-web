@@ -1,33 +1,11 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, switchMap, tap } from 'rxjs/operators';
+import { map, switchMap, tap, reduce, } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-
-export interface Link {
-  title: string;
-  description: string;
-  link: string;
-  cta: string;
-}
-
-export interface Organizer {
-  name: string;
-  url: string;
-  gdg: string;
-}
+import { Link, MapInfo, Organizer, Speaker, VideoInfo, GaleryInfo, SponsorsByCategory, Sponsor } from './api.model';
 
 
-export interface MapInfo {
-  url: string;
-  alt: string;
-  title: string;
-  description: string;
-}
-
-export interface VideoInfo {
-  embedded_code: string;
-}
 
 @Injectable({
   providedIn: 'root',
@@ -36,6 +14,18 @@ export class ApiService {
   baseUrl = environment.apiUrl;
 
   constructor(private http: HttpClient) { }
+
+  getAllSpeakers(): Observable<Speaker[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
+      map((data: any[]): Speaker[] => {
+        return data.map(speaker => {
+          const { acf } = speaker;
+          const { photo } = acf;
+          return { ...acf, photoUrl: photo.url } as Speaker;
+        });
+      })
+    );
+  }
 
   getAllLinks(): Observable<Link[]> {
     return this.http.get<any[]>(`${this.baseUrl}/links`).pipe(
@@ -58,7 +48,7 @@ export class ApiService {
           if (chapter) {
             gdg = chapter[0].post_title;
           }
-          return { ...acf, url: photo.url, gdg } as Organizer;
+          return { ...acf, photoUrl: photo.url, gdg } as Organizer;
         }).sort((a, b) => a.gdg.localeCompare(b.gdg));
       })
     );
@@ -84,6 +74,49 @@ export class ApiService {
     );
   }
 
+  getAllGaleryImages(): Observable<GaleryInfo[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/gallery`).pipe(
+      map((data: any[]): GaleryInfo[] => {
+        return data.map((_data) => {
+
+          const url = _data?.acf?.image?.sizes?.large;
+          return { url } as GaleryInfo;
+        }).map(el => el);
+      }));
+  }
+
+
+  getAllSponsors(): Observable<SponsorsByCategory[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/sponsors`).pipe(
+      map((data: any[],): SponsorsByCategory[] => {
+        return data.reduce((_acc: SponsorsByCategory[], _actual) => {
+          const _temp = _actual?.acf;
+          const _sponsor = {
+            name: _temp?.name,
+            url: _temp?.site,
+            logoUrl: _temp?.logo?.sizes?.medium,
+            category: _temp?.type_name
+            // sponsor_type
+          } as Sponsor;
+
+          const _categoryFinded = _acc.findIndex((_category: SponsorsByCategory) => {
+            return _category.name == _sponsor.category
+          });
+
+          if (_categoryFinded > -1) {
+            _acc[_categoryFinded].sponsors.push(_sponsor)
+          } else {
+            _acc.push({
+              name: _sponsor.category,
+              order: _temp.sponsor_type,
+              sponsors: [_sponsor],
+            })
+          }
+          console.log('acc', _acc)
+          return _acc;
+        }, new Array<SponsorsByCategory>()).sort((el, ol) => el.order - ol.order).filter((el: SponsorsByCategory) => el.name != 'Todos');
+      }));
+  }
 
 
   // getOrganizerById(id: number): Observable<any> {

@@ -10,8 +10,9 @@
       <a routerLink="/home" class="sidenav-logo"><img src="assets/img/logo.png" /></a>
     </mat-toolbar>
     <mat-nav-list>
-      <a href="#" (click)="navigateTo($event, '/home')">Home</a>
-      <a href="#" (click)="navigateTo($event, '/organizacao')">Organização</a>
+      <a class="nav-item" routerLink="/home" routerLinkActive="active" (click)="closeNavbar()">Home</a>
+      <a class="nav-item" routerLink="/organizacao" routerLinkActive="active" (click)="closeNavbar()">Organização</a>
+      <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active" (click)="closeNavbar()">Palestrantes</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -28,13 +29,11 @@
       <a routerLink="/home" class="sidenav-logo" *ngIf="(isHandset$ | async) === false"><img src="assets/img/logo.png" /></a>
       <div style="flex: 1;"></div>
       <ng-container *ngIf="(isHandset$ | async) === false">
-        <a routerLink="/home">Home</a>
-        <a routerLink="/organizacao">Organização</a>
-        <!-- <a>Palestrantes</a> -->
-        <!-- <a>Cronograma</a> -->
-        <!-- <a>Cabine de Fotos</a> -->
+        <a class="nav-item" routerLink="/home" routerLinkActive="active">Home</a>
+        <a class="nav-item" routerLink="/organizacao" routerLinkActive="active">Organização</a>
+        <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active">Palestrantes</a>
       </ng-container>
-      <button mat-raised-button color="primary" (click)="navigateToIndeeds()">Fazer Inscrição</button>
+      <button mat-raised-button color="primary" class="cta" (click)="navigateToIndeeds()">Fazer Inscrição</button>
     </mat-toolbar>
 
     <ng-content></ng-content>

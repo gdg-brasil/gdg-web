@@ -1,9 +1,8 @@
 <dfb-hero-section></dfb-hero-section>
 <dfb-about-section></dfb-about-section>
-<!-- <dfb-speakers-section></dfb-speakers-section> -->
+<dfb-speakers-section [speakers]="speakers$ | async"></dfb-speakers-section>
 <dfb-video-section [videoInfo]="videoInfo$ | async"></dfb-video-section>
-<!-- <dfb-gallery-section></dfb-gallery-section> -->
+<dfb-gallery-section [galeryImages]="galeryImages$ | async"></dfb-gallery-section>
 <dfb-links-section [links]="links$ | async"></dfb-links-section>
 <dfb-map-section [mapInfo]="mapInfo$ | async"></dfb-map-section>
-
-
+<dfb-sponsors-section [sponsorsByCategory]="sponsors$ | async"></dfb-sponsors-section>

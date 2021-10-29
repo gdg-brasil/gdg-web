@@ -1,25 +1,27 @@
-.speakers-wrapper {
-  margin: 40px 0 32px;
+.team-wrapper {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  grid-gap: 32px 16px;
-  justify-content: center;
+  grid-template-columns: 1fr;
+  grid-gap: 24px;
+  margin-bottom: 32px;
+
+  @media (min-width: 640px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 
   @media (min-width: 1024px) {
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
   }
 }
 
-.speaker {
-  text-align: center;
-  cursor: pointer;
-  display: block;
-  position: relative;
-  min-height: 100%;
-  height: 100%;
-  --paper-menu-button-dropdown-background: var(--primary-background-color);
-  --app-drawer-content-container_-_display: flex;
-  --app-drawer-content-container_-_flex-direction: column;
+.member {
+  padding: 16px 0;
+  min-width: 300px;
+  display: flex;
+  flex-direction: row;
+
+  @media (min-width: 640px) {
+    padding: 32px 0;
+  }
 }
 
 .photo {
@@ -29,7 +31,6 @@
   border-radius: 50%;
   overflow: hidden;
   transform: translateZ(0);
-  margin: 0 auto;
 
   @media (min-width: 640px) {
     width: 128px;
@@ -132,23 +133,36 @@
 
 .description {
   color: var(--primary-text-color);
+  margin-left: 16px;
+  padding-left: 6px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 
   .name {
-      margin-top: 20px;
-      line-height: 1.1;
-
-      @media (min-width: 640px) {
-          font-size: 24px;
-      }
+    line-height: 28px;
+    font-size: 24px;
+    font-weight: 400;
+    margin: 0;
   }
 
   .origin {
-    margin-top: 4px;
-    font-size: 14px;
-    line-height: 1.1;
+    font-size: 16px;
+    margin: 0;
   }
 }
 
 .container {
   margin-top: 50px;
+}
+
+.contacts {
+
+  img.icon {
+    filter: invert(22%) sepia(56%) saturate(2547%) hue-rotate(247deg) brightness(97%) contrast(92%);
+    opacity: .9;
+    width: 20px;
+    height: 20px;
+    padding: 6px;
+  }
 }
