@@ -9,7 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   HomePageComponent,
   SpeakersPageComponent,
-  TeamPageComponent
+  TeamPageComponent, 
+  WatchPageComponent
 } from './pages';
 import {
   AboutSectionComponent,
@@ -22,6 +23,9 @@ import {
   OrganizersSectionComponent,
   SpeakersSectionComponent,
   VideoSectionComponent,
+  VideoTrackSectionComponent,
+  TracksSectionComponent,
+  ScheduleSectionComponent,
   SponsorsSectionComponent
 } from './components';
 
@@ -35,6 +39,10 @@ const COMPONENTS = [
   OrganizersSectionComponent,
   SpeakersSectionComponent,
   VideoSectionComponent,
+  VideoTrackSectionComponent,
+  LinksSectionComponent,
+  TracksSectionComponent,
+  ScheduleSectionComponent,
   LinksSectionComponent,
   SponsorsSectionComponent
 ]
@@ -42,7 +50,8 @@ const COMPONENTS = [
 const PAGES = [
   HomePageComponent,
   SpeakersPageComponent,
-  TeamPageComponent
+  TeamPageComponent,
+  WatchPageComponent
 ]
 
 @NgModule({

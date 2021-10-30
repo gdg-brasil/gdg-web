@@ -17,16 +17,11 @@ export interface Organizer {
   site: string;
 }
 
-
 export interface MapInfo {
   url: string;
   alt: string;
   title: string;
   description: string;
-}
-
-export interface VideoInfo {
-  embedded_code: string;
 }
 
 export interface Speaker {
@@ -53,11 +48,6 @@ export interface GaleryInfo {
 export interface Sponsor {
   url: string;
   name: string;
-}
-
-export interface Sponsor {
-  url: string;
-  name: string;
   logoUrl: string;
   category: string;
 }
@@ -66,4 +56,18 @@ export interface SponsorsByCategory {
   name: string;
   order: number;
   sponsors: Sponsor[]
+}
+
+export interface Schedule {
+  start: string;
+  end: string;
+  speakerName: string;
+  lectureTitle: string;
+}
+
+export interface Track {
+  embedded_code: string;
+  name?: string;
+  date?: string;
+  schedule?: Schedule[];
 }

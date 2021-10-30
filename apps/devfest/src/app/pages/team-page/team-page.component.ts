@@ -7,6 +7,7 @@ import { ApiService } from '../../services/api.service';
   styleUrls: ['./team-page.component.scss'],
 })
 export class TeamPageComponent {
+  title: string = 'Organizadores';
   organizers$ = this.api.getAllOrganizers();
 
   constructor(private api: ApiService) {}

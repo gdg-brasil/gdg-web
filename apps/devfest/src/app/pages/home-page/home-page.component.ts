@@ -10,7 +10,7 @@ export class HomePageComponent {
   speakers$ = this.api.getAllSpeakers();
   links$ = this.api.getAllLinks();
   mapInfo$ = this.api.getMapInfo();
-  videoInfo$ = this.api.getVideoInfo();
+  track$ = this.api.getVideoInfo();
   galeryImages$ = this.api.getAllGaleryImages();
   sponsors$ = this.api.getAllSponsors();
 

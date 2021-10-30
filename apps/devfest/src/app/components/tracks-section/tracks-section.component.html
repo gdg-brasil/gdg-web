@@ -1,0 +1,30 @@
+<div class="container video-wrapper" *ngFor="let track of tracks" [class.hide]="!isSelectedTrack(track)">
+    <h2 class="container-title">
+        {{track?.name ? 'Trilha ' + track?.name : ''}}
+    </h2>
+    <dfb-video-track-section [track]="track"></dfb-video-track-section>
+    <div class="chat">
+        <iframe
+            allowfullscreen=""
+            frameborder="0"
+            src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw=="
+            width="480"
+            loading="lazy"
+            class="lazyload chat-youtube"
+            data-src="https://www.youtube.com/live_chat?v=lEWUxrYAkn0&amp;embed_domain=devfest.com.br">
+        </iframe>
+    </div>
+</div>
+<div class="featured container">
+    <h3 class="container-title">Trilhas</h3>
+    <h4 class="container-title">Escolha para assistir</h4>
+    <div class="container tracks">
+        <a href="#" class="track" *ngFor="let track of tracks; let i = index" (click)="selectTrack($event, track)">
+          <img class="track-image" src="assets/svg/facebook-square-brands.svg" alt="Imagem da trilha" [src]="'../../assets/img/' + track.name?.replace('ô', 'o') + '.jpeg'" />
+          <div class="track-image-overlay">
+              <p>Trilha {{ i + 1 }}<br /><strong>{{ track.name }}</strong></p>
+              <p class="footer">Clique para assistir</p>
+          </div>
+        </a>
+    </div>
+</div>
