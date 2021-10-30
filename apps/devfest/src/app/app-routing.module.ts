@@ -1,14 +1,14 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { SpeakersPageComponent, TeamPageComponent, PrivacyPolicyPageComponent } from './pages';
-import { HomePageComponent } from './pages/home-page/home-page.component';
-
+import { HomePageComponent, SpeakersPageComponent, TeamPageComponent, PrivacyPolicyPageComponent, WatchPageComponent } from './pages';
+  
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomePageComponent },
   { path: 'organizacao', component: TeamPageComponent },
   { path: 'politica-privacidade', component: PrivacyPolicyPageComponent },
   { path: 'palestrantes', component: SpeakersPageComponent },
+  { path: 'assistir', component: WatchPageComponent }
 ];
 
 @NgModule({

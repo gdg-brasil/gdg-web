@@ -3,11 +3,11 @@ import { DomSanitizer } from '@angular/platform-browser';
 import { Track } from '../../services/api.model';
 
 @Component({
-  selector: 'dfb-video-section',
-  templateUrl: './video-section.component.html',
-  styleUrls: ['./video-section.component.scss'],
+  selector: 'dfb-video-track-section',
+  templateUrl: './video-track-section.component.html',
+  styleUrls: ['./video-track-section.component.scss'],
 })
-export class VideoSectionComponent {
+export class VideoTrackSectionComponent {
   @Input() track!: Track | null;
 
   constructor(private sanitizer: DomSanitizer) {}
