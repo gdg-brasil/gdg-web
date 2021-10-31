@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { Talk } from '../../../services/api.model';
 
 @Component({
   selector: 'dfb-schedule-dialog',
@@ -7,5 +8,5 @@ import { MAT_DIALOG_DATA } from '@angular/material/dialog';
   styleUrls: ['./schedule-dialog.component.scss'],
 })
 export class ScheduleDialogComponent {
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {}
+  constructor(@Inject(MAT_DIALOG_DATA) public data: Talk) {}
 }

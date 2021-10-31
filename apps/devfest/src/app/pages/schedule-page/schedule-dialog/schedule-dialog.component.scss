@@ -1,100 +1,18 @@
-header {
+.header {
   background-color: #F7F7F7;
-}
-  
-.member {
-  padding: 24px;
-  margin: 0;
-  
-  min-width: 300px;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-
-  @media (min-width: 640px) {
-    margin: 0 68px;  
-  }
-  
-  @media (min-width: 900px) {
-    padding: 32px 0;
-    flex-direction: row;
-    justify-content: start;
-  }
-
-}
-
-.photo {
-  width: 72px;
-  height: 72px;
-  background-color: #e8e8e8;
-  border-radius: 50%;
-  overflow: hidden;
-  transform: translateZ(0);
-
-  @media (min-width: 640px) {
-    width: 128px;
-    height: 128px;
-  }
-
-  img {
-    width: 72px;
-    height: 72px;
-    background-size: cover;
-    background-position: center center;
-    background-repeat: no-repeat;
-    object-fit: cover;
-
-    @media (min-width: 640px) {
-      width: 128px;
-      height: 128px;
-    }
-  }
-}
-
-.member-description {
-  color: var(--primary-text-color);
-  padding: 24px 0 32px 0;
-  display: flex;
-  margin-left: 32px;
-  flex-direction: column;
-  justify-content: center;
-  max-height: 50vh;
-  overflow-y: auto;
 
   &-wrapper {
-    margin: 0 68px;
-  }
-
-  .name {
-    line-height: 28px;
-    font-size: 24px;
-    font-weight: 400;
+    padding: 32px 24px;
     margin: 0;
-    padding-bottom: 10px;
-    text-align: center;
 
-    @media (min-width: 900px) {
-      text-align: left;
+    h3 {
+      font-size: 24px;
+      text-align: center;
     }
-  }
 
-  .origin {
-    font-size: 16px;
-    text-align: justify;
-    line-height: 24px;
-    text-align: center;
-
-    @media (min-width: 900px) {
-      text-align: left;
+    @media (min-width: 640px) {
+      margin: 0 68px;  
     }
-  }
-
-  .bio {
-    font-size: 16px;
-    text-align: justify;
-    line-height: 24px;
-    margin-bottom: 20px;
   }
 }
 
@@ -103,25 +21,31 @@ header {
   padding: 24px 0 32px 0;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   max-height: 50vh;
   overflow-y: auto;
 
   &-wrapper {
-    margin: 20px 68px;
+    padding: 32px 24px;
+    margin: 0;
+
+    @media (min-width: 640px) {
+      margin: 0 68px;
+    }
   }
 
-  .company {
+  .level {
     font-size: 18px;
     font-weight: 400;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
+    text-align: justify;
   }
 
-  .origin {
+  .abstract {
     font-size: 16px;
     text-align: justify;
     line-height: 24px;
     text-align: center;
+    padding: 30px 0;
 
     @media (min-width: 900px) {
       text-align: left;
@@ -153,4 +77,49 @@ header {
 
 .hide {
   display: none;
+}
+
+.member {
+  padding: 0;
+  margin: 20px 0;
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  @media (min-width: 640px) {
+    margin: 0 68px;  
+    min-width: 300px;
+  }
+  
+  @media (min-width: 900px) {
+    margin: 0;
+    flex-direction: row;
+    justify-content: start;
+  }
+
+  &-description {
+    @media (min-width: 900px) {
+      padding-left: 20px;
+    }
+  }
+}
+
+.photo {
+  width: 72px;
+  height: 72px;
+  background-color: #e8e8e8;
+  border-radius: 50%;
+  overflow: hidden;
+  transform: translateZ(0);
+
+  img {
+    width: 72px;
+    height: 72px;
+    background-size: cover;
+    background-position: center center;
+    background-repeat: no-repeat;
+    object-fit: cover;
+  }
 }

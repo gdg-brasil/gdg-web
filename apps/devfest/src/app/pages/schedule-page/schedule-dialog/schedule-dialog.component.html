@@ -1,17 +1,28 @@
 <ng-container>
-  <header>
-    <!-- <div class="member">
-      <div class="photo">
-        <img [src]="data.photoUrl" loading="lazy" />
-      </div>
-      <div class="member-description">
-        <h3 class="name">{{data.name}}</h3>
-        <div class='origin'>{{data.position}}</div>
-      </div>
-    </div> -->
+  <header class="header">
+    <div class="header-wrapper">
+      <h3>{{ data.details?.title }}</h3>
+    </div>
   </header>
   
   <div class="description">
+    <div class="description-wrapper">
+      <div class='level'>Data: {{ data.date }}</div>
+      <div class='level'>Trilha: {{ data.name }}</div>
+      <div class='level'>Nível: {{ data.details?.level }}</div>
+
+      <div class='abstract'>{{ data.details?.abstract }}</div>
+
+      <div class='level'>Palestrante</div>
+      <div class="member">
+        <div class="photo">
+          <img [src]="data.speakerPhotoUrl" loading="lazy" />
+        </div>
+        <div class="member-description">
+          <h3 class="name">{{data.speakerName}}</h3>
+        </div>
+      </div>
+    </div>
     <!-- <div class="description-wrapper">
       <div class='company'>{{data.company}}</div>
       <div class='bio'>{{data.bio}}</div>

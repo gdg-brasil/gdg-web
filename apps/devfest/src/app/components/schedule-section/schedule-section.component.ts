@@ -1,5 +1,5 @@
-import { Component, Input } from '@angular/core';
-import { TrackDate } from '../../services/api.model';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
+import { Talk, TrackDate } from '../../services/api.model';
 
 @Component({
   selector: 'dfb-schedule-section',
@@ -8,4 +8,11 @@ import { TrackDate } from '../../services/api.model';
 })
 export class ScheduleSectionComponent {
   @Input() dates!: TrackDate[] | null;
+  @Output() show = new EventEmitter<Talk>();
+
+  openDialog(event: Event, talk: Talk) {
+    event.preventDefault();
+    
+    this.show.emit(talk);
+  }
 }

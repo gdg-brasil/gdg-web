@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
-import { Track } from '../../services/api.model';
+import { Talk, Track } from '../../services/api.model';
 import { ApiService } from '../../services/api.service';
 import { ScheduleDialogComponent } from './schedule-dialog/schedule-dialog.component';
 
@@ -10,7 +10,7 @@ import { ScheduleDialogComponent } from './schedule-dialog/schedule-dialog.compo
   styleUrls: ['./schedule-page.component.scss'],
 })
 export class SchedulePageComponent {
-  title: string = 'Agenda';
+  title: string = 'Trilhas';
   dates$ = this.api.getAllTracksByDate();
 
   constructor(
@@ -18,9 +18,9 @@ export class SchedulePageComponent {
     private dialog: MatDialog
   ) {}
 
-  openTalkDialog(track: Track) {
+  openTalkDialog(talk: Talk) {
     this.dialog.open(ScheduleDialogComponent, {
-      data: track,
+      data: talk,
       autoFocus: false
     })
   }

@@ -9,7 +9,7 @@ const routes: Routes = [
   { path: 'politica-privacidade', component: PrivacyPolicyPageComponent },
   { path: 'palestrantes', component: SpeakersPageComponent },
   { path: 'agenda', component: SchedulePageComponent },
-  { path: 'assistir', component: WatchPageComponent }
+  { path: 'assistir/:day', component: WatchPageComponent }
 ];
 
 @NgModule({

@@ -1,8 +1,4 @@
 <div class="container">
-    <h2 class="container-title">
-        Agenda
-    </h2>
-
     <mat-tab-group mat-align-tabs="start" selectedIndex="2">
       <mat-tab *ngFor="let date of dates" [label]="date.label">
         <div 
@@ -10,12 +6,20 @@
           [class.cols-1]="date.tracks.length === 1"  
           [class.cols-2]="date.tracks.length === 2"
         >
-          <div class="column" *ngFor="let track of date.tracks">
-            <div class="card" *ngFor="let talk of track.schedule" [class.hide]="!talk.speakerName">
-              <h3>{{ talk.lectureTitle }}</h3>
-              <span>{{ talk.speakerName }}</span>
-              <p>{{ talk.start | slice:0:5 }}</p>
-            </div>
+          <div class="column" *ngFor="let track of date.tracks; let i = index">
+            <span class="column__title">{{ track.name }}</span>
+            <a href="#" 
+              class="card track-{{i + 1}}"
+              [class.hide]="!talk.speakerName"
+              *ngFor="let talk of track.schedule"
+              (click)="openDialog($event, talk)"
+            >
+              <h3>{{ talk.details?.title }}</h3>
+              <div>
+                <span>{{ talk.speakerName }}</span>
+                <p>{{ talk.start | slice:0:5 }}h</p>
+              </div>
+            </a>
           </div>
         </div>
       </mat-tab>
