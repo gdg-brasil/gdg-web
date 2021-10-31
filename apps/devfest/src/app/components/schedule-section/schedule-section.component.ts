@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { Track, Schedule } from '../../services/api.model';
+import { TrackDate } from '../../services/api.model';
 
 @Component({
   selector: 'dfb-schedule-section',
@@ -7,5 +7,5 @@ import { Track, Schedule } from '../../services/api.model';
   styleUrls: ['./schedule-section.component.scss'],
 })
 export class ScheduleSectionComponent {
-  @Input() tracks!: Track[] | null;
+  @Input() dates!: TrackDate[] | null;
 }

@@ -11,8 +11,9 @@
     </mat-toolbar>
     <mat-nav-list>
       <a class="nav-item" routerLink="/home" routerLinkActive="active" (click)="closeNavbar()">Home</a>
-      <a class="nav-item" routerLink="/organizacao" routerLinkActive="active" (click)="closeNavbar()">Organização</a>
       <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active" (click)="closeNavbar()">Palestrantes</a>
+      <a class="nav-item" routerLink="/agenda" routerLinkActive="active" (click)="closeNavbar()">Agenda</a>
+      <a class="nav-item" routerLink="/organizacao" routerLinkActive="active" (click)="closeNavbar()">Organização</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -30,9 +31,9 @@
       <div style="flex: 1;"></div>
       <ng-container *ngIf="(isHandset$ | async) === false">
         <a class="nav-item" routerLink="/home" routerLinkActive="active">Home</a>
-        <a class="nav-item" routerLink="/organizacao" routerLinkActive="active">Organização</a>
         <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active">Palestrantes</a>
-        <!-- <a class="nav-item" routerLink="/assistir" routerLinkActive="active">Assistir</a> -->
+        <a class="nav-item" routerLink="/agenda" routerLinkActive="active">Agenda</a>
+        <a class="nav-item" routerLink="/organizacao" routerLinkActive="active">Organização</a>
       </ng-container>
       <button mat-raised-button color="primary" class="cta" (click)="navigateToIndeeds()">Fazer Inscrição</button>
     </mat-toolbar>

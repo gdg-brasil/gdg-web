@@ -1,8 +1,27 @@
 <div class="container">
     <h2 class="container-title">
-        Programação
+        Agenda
     </h2>
-    <div class="card-wrapper" *ngFor="let track of tracks">
+
+    <mat-tab-group mat-align-tabs="start" selectedIndex="2">
+      <mat-tab *ngFor="let date of dates" [label]="date.label">
+        <div 
+          class="grid"
+          [class.cols-1]="date.tracks.length === 1"  
+          [class.cols-2]="date.tracks.length === 2"
+        >
+          <div class="column" *ngFor="let track of date.tracks">
+            <div class="card" *ngFor="let talk of track.schedule" [class.hide]="!talk.speakerName">
+              <h3>{{ talk.lectureTitle }}</h3>
+              <span>{{ talk.speakerName }}</span>
+              <p>{{ talk.start | slice:0:5 }}</p>
+            </div>
+          </div>
+        </div>
+      </mat-tab>
+    </mat-tab-group>
+
+    <!-- <div class="card-wrapper" *ngFor="let track of tracks">
         <div class="row">
             <div class="col-lg-2 col-md-2 align-center icon-col">
                 <img src="data:image/gif;base64,R0lGODlhAQABAAAAACH5BAEKAAEALAAAAAABAAEAAAICTAEAOw==" loading="lazy" class="lazyload" data-src="assets/images/android.png">
@@ -21,5 +40,5 @@
                 </div>
             </div>
         </div>
-    </div>
+    </div> -->
 </div>
