@@ -64,7 +64,6 @@ export interface Schedule {
   speakerName: string;
   lectureTitle: string;
 }
-
 export interface Track {
   embedded_code: string;
   name?: string;
