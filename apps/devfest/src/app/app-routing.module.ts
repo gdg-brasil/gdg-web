@@ -8,11 +8,7 @@ const routes: Routes = [
   { path: 'organizacao', component: TeamPageComponent },
   { path: 'politica-privacidade', component: PrivacyPolicyPageComponent },
   { path: 'palestrantes', component: SpeakersPageComponent },
-<<<<<<< Updated upstream
   { path: 'assistir', component: WatchPageComponent }
-=======
-  { path: 'watchpage', component: WatchPageComponent }
->>>>>>> Stashed changes
 ];
 
 @NgModule({
