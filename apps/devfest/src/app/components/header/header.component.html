@@ -1,7 +1,7 @@
 <mat-sidenav-container class="sidenav-container">
-  <mat-sidenav #drawer 
-      class="sidenav" 
-      fixedInViewport 
+  <mat-sidenav #drawer
+      class="sidenav"
+      fixedInViewport
       [autoFocus]="false"
       [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
       [mode]="(isHandset$ | async) ? 'over' : 'side'"
@@ -14,6 +14,7 @@
       <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active" (click)="closeNavbar()">Palestrantes</a>
       <a class="nav-item" routerLink="/agenda" routerLinkActive="active" (click)="closeNavbar()">Agenda</a>
       <a class="nav-item" routerLink="/organizacao" routerLinkActive="active" (click)="closeNavbar()">Organização</a>
+      <a class="nav-item" href='https://loja.devfest.com.br' target='_blank' (click)="closeNavbar()">Loja</a>
     </mat-nav-list>
   </mat-sidenav>
   <mat-sidenav-content>
@@ -34,11 +35,12 @@
         <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active">Palestrantes</a>
         <a class="nav-item" routerLink="/agenda" routerLinkActive="active">Agenda</a>
         <a class="nav-item" routerLink="/organizacao" routerLinkActive="active">Organização</a>
+        <a class="nav-item" href='https://loja.devfest.com.br' target='_blank'>Loja</a>
       </ng-container>
       <button mat-raised-button color="primary" class="cta" (click)="navigateToIndeeds()">Fazer Inscrição</button>
     </mat-toolbar>
 
     <ng-content></ng-content>
-    
+
   </mat-sidenav-content>
 </mat-sidenav-container>
