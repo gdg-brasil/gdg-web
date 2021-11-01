@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomePageComponent, SpeakersPageComponent, TeamPageComponent, PrivacyPolicyPageComponent, WatchPageComponent } from './pages';
+import { HomePageComponent, SpeakersPageComponent, TeamPageComponent, PrivacyPolicyPageComponent, WatchPageComponent, SchedulePageComponent } from './pages';
   
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -8,7 +8,8 @@ const routes: Routes = [
   { path: 'organizacao', component: TeamPageComponent },
   { path: 'politica-privacidade', component: PrivacyPolicyPageComponent },
   { path: 'palestrantes', component: SpeakersPageComponent },
-  { path: 'assistir', component: WatchPageComponent }
+  { path: 'agenda', component: SchedulePageComponent },
+  { path: 'assistir/:day', component: WatchPageComponent }
 ];
 
 @NgModule({

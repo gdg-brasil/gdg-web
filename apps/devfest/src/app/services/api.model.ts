@@ -58,16 +58,29 @@ export interface SponsorsByCategory {
   sponsors: Sponsor[]
 }
 
-export interface Schedule {
+export interface Talk {
   start: string;
   end: string;
-  speakerName: string;
-  lectureTitle: string;
+  name?: string;
+  date?: string;
+  speakerName?: string;
+  speakerPhotoUrl?: string;
+  details?: {
+    title: string;
+    tags: string[];
+    level: string;
+    abstract: string;
+  }
+}
+
+export interface TrackDate {
+  label: string;
+  tracks: Track[];
 }
 
 export interface Track {
   embedded_code: string;
   name?: string;
   date?: string;
-  schedule?: Schedule[];
+  schedule?: Talk[];
 }
