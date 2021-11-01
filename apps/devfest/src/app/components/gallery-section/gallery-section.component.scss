@@ -3,7 +3,7 @@
 }
 
 .photos-grid {
-  margin: 64px auto;
+  margin: 60px 0 200px 0;
   display: grid;
   width: 100%;
   min-height: 400px;
@@ -19,7 +19,7 @@
     height: 260px;
 
     &:nth-child(4) {
-      
+
       @media (min-width: 640px) {
         grid-area: 4 / 3 / 4 / 3;
       }
