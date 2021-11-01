@@ -8,6 +8,7 @@ import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
 import {
   HomePageComponent,
+  SchedulePageComponent,
   SpeakersPageComponent,
   TeamPageComponent, 
   WatchPageComponent
@@ -51,6 +52,7 @@ const COMPONENTS = [
 
 const PAGES = [
   HomePageComponent,
+  SchedulePageComponent,
   SpeakersPageComponent,
   TeamPageComponent,
   WatchPageComponent

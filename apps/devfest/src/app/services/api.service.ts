@@ -1,9 +1,9 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
-import { map, switchMap, tap, reduce, } from 'rxjs/operators';
+import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Link, MapInfo, Organizer, Speaker, GaleryInfo, SponsorsByCategory, Sponsor, Track, Schedule } from './api.model';
+import { Link, MapInfo, Organizer, Speaker, GaleryInfo, SponsorsByCategory, Sponsor, Track, TrackDate, Talk } from './api.model';
 
 @Injectable({
   providedIn: 'root',
@@ -14,7 +14,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAllSpeakers(): Observable<Speaker[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
+    return this.http.get<any[]>('assets/json/speakers.json').pipe(
+    // return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
       map((data: any[]): Speaker[] => {
         return data.map(speaker => {
           const { acf } = speaker;
@@ -37,8 +38,8 @@ export class ApiService {
   }
 
   getAllOrganizers(): Observable<Organizer[]> {
-    // return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
     return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
+    // return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
       map((data: any[]): Organizer[] => {
         return data.map(organizer => {
           const { acf } = organizer;
@@ -84,42 +85,59 @@ export class ApiService {
       }));
   }
 
-  // getAllTracks(): Observable<Track[]> {
-  //   return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
-  //     map((data: any[]): Track[] => {
-  //       return data.map(track => {
-  //         const { acf } = track;
-  //         const { name, date, embedded_code } = acf;
-          
-  //         return { name, date, embedded_code } as Track;
-  //       }).sort((a, b) => a.name.localeCompare(b.name));
-  //     })
-  //   );
-  // }
-
   getAllTracks(): Observable<Track[]> {
+    // return this.http.get<any[]>('assets/json/tracks.json').pipe(
     return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
       map((data: any[]): Track[] => {
         return data.map(track => {
           const { acf } = track;
           const { name, date, embedded_code, scheduler } = acf;
           
-          const schedule = scheduler.map((s: any): Schedule => {
+          const schedule = scheduler.map((s: any): Talk => {
               const { start, end, speaker, deck } = s;
               const speakerName = speaker[0]?.acf?.name;
-              const lectureTitle = deck[0]?.post_title;
+              const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+              const details = deck[0]?.acf;
   
-              return {start, end, speakerName, lectureTitle} as Schedule
+              return {start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
           });
           
           return { name, date, embedded_code, schedule } as Track;
         });
-      })
+      }),
     );
   }
 
+  getAllTracksByDate(): Observable<TrackDate[]> {
+    // return this.http.get<any[]>('assets/json/tracks.json').pipe(
+    return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
+      map((data: any[]): Track[] => {
+        return data.map(track => {
+          const { acf } = track;
+          const { name, date, embedded_code, scheduler } = acf;
+          
+          const schedule = scheduler.map((s: any): Talk => {
+              const { start, end, speaker, deck } = s;
+              const speakerName = speaker[0]?.acf?.name;
+              const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+              const details = deck[0]?.acf;
   
+              return {start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+          });
+          
+          return { name, date, embedded_code, schedule } as Track;
+        });
+      }),
+      map((data: Track[]): TrackDate[] => {
+        const dates = [];
+        dates.push({ label: '05 Nov', tracks: data.filter(track => track.date === "05\/11\/2021")});
+        dates.push({ label: '06 Nov', tracks: data.filter(track => track.date === "06\/11\/2021")});
+        dates.push({ label: '07 Nov', tracks: data.filter(track => track.date === "07\/11\/2021")});
 
+        return dates;
+      })
+    );
+  }
 
   getAllSponsors(): Observable<SponsorsByCategory[]> {
     return this.http.get<any[]>(`${this.baseUrl}/sponsors`).pipe(
