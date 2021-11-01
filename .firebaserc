@@ -5,21 +5,11 @@
     "devfest-prod": "gdg-brasil"
   },
   "targets": {
-    "gdg-brasil": {
+    "devfestbrasil2020": {
       "hosting": {
-        "devfest-stg": [
-          "gdg-brasil-devfest-stg"
-        ],
-        "devfest-prod": [
-          "gdg-brasil-devfest"
+        "devfestbrasil2020": [
+          "devfestbrasil2020"
         ]
-      }
-    },
-  "devfestbrasil2020": {
-    "hosting": {
-      "devfest-prod": [
-        "devfestbrasil2020"
-      ]
       }
     }
   }
