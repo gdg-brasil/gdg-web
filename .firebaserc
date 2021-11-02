@@ -7,8 +7,11 @@
   "targets": {
     "devfestbrasil2020": {
       "hosting": {
-        "devfestbrasil2020": [
-          "devfestbrasil2020"
+        "devfest-stg": [
+          "gdg-brasil-devfest-stg"
+        ],
+        "devfest-prod": [
+          "gdg-brasil-devfest"
         ]
       }
     }

@@ -1,7 +1,22 @@
 {
   "hosting": [
     {
-      "target": "devfestbrasil2020",
+      "target": "devfest-stg",
+      "public": "dist/apps/devfest",
+      "ignore": [
+        "firebase.json",
+        "**/.*",
+        "**/node_modules/**"
+      ],
+      "rewrites": [
+        {
+          "source": "**",
+          "destination": "/index.html"
+        }
+      ]
+    },
+    {
+      "target": "devfest-prod",
       "public": "dist/apps/devfest",
       "ignore": [
         "firebase.json",
