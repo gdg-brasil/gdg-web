@@ -14,8 +14,8 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAllSpeakers(): Observable<Speaker[]> {
-    return this.http.get<any[]>('assets/json/speakers.json').pipe(
-    // return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
+    // return this.http.get<any[]>('assets/json/speakers.json').pipe(
+    return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
       map((data: any[]): Speaker[] => {
         return data.map(speaker => {
           const { acf } = speaker;
@@ -38,8 +38,8 @@ export class ApiService {
   }
 
   getAllOrganizers(): Observable<Organizer[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
     // return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
+    return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
       map((data: any[]): Organizer[] => {
         return data.map(organizer => {
           const { acf } = organizer;
