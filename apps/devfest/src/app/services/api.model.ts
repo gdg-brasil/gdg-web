@@ -77,7 +77,6 @@ export interface TrackDate {
   label: string;
   tracks: Track[];
 }
-
 export interface Track {
   embedded_code: string;
   name?: string;
