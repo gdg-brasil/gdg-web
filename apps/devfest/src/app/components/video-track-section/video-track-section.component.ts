@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { DomSanitizer } from '@angular/platform-browser';
 import { Track } from '../../services/api.model';
+import { SanitizeService } from '../../services/sanitize.service';
 
 @Component({
   selector: 'dfb-video-track-section',
@@ -10,9 +10,13 @@ import { Track } from '../../services/api.model';
 export class VideoTrackSectionComponent {
   @Input() track!: Track | null;
 
-  constructor(private sanitizer: DomSanitizer) {}
+  constructor(private sanitizer: SanitizeService) {}
 
   get safeUrl() {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${this.track?.embedded_code}`);
+    if (!this.track){
+      return '';
+    }
+
+    return this.sanitizer.safeYoutubeUrl(this.track?.embedded_code);
   }
 }

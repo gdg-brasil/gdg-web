@@ -1,5 +1,6 @@
 import { Component, Input, OnChanges } from '@angular/core';
 import { Track } from '../../services/api.model';
+import { SanitizeService } from '../../services/sanitize.service';
 
 @Component({
   selector: 'dfb-tracks-section',
@@ -9,6 +10,8 @@ import { Track } from '../../services/api.model';
 export class TracksSectionComponent implements OnChanges {
   @Input() tracks!: Track[] | null;
   selectedTrack: Track | null = null;
+
+  constructor(private sanitizer: SanitizeService) {}
 
   ngOnChanges() {
     if(this.tracks?.length) {
@@ -26,5 +29,13 @@ export class TracksSectionComponent implements OnChanges {
     this.selectedTrack = track;
     window.scrollTo({ top: 0, behavior: 'smooth' });
 
+  }
+
+  get safeYoutubeChatUrl() {
+    if (!this.selectedTrack){
+      return '';
+    }
+
+    return this.sanitizer.safeYoutubeChatUrl(this.selectedTrack?.embedded_code);
   }
 }
