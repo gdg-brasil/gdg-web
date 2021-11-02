@@ -82,13 +82,16 @@
             "inlineStyleLanguage": "scss",
             "assets": [
               "apps/devfest/src/favicon.ico",
-              "apps/devfest/src/assets"
+              "apps/devfest/src/assets",
+              "apps/devfest/src/manifest.webmanifest"
             ],
             "styles": [
               "apps/devfest/src/styles.scss",
               "apps/devfest/src/custom-theme.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "serviceWorker": true,
+            "ngswConfigPath": "apps/devfest/ngsw-config.json"
           },
           "configurations": {
             "production": {

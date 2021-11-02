@@ -1,0 +1,10 @@
+<div class='page'>
+  <div class='container hero'>
+    <h2 class='container-title'>{{title}}</h2>
+  </div>
+
+  <dfb-schedule-section [dates]="dates$ | async" (show)="openTalkDialog($event)"></dfb-schedule-section>
+</div>
+
+
+
