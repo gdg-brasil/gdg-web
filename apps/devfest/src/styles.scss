@@ -127,3 +127,10 @@ paper-button {
   width: 720px !important;
   padding: 0 !important;
 }
+
+.mat-chip-list-wrapper {
+  flex-direction: row !important;
+  @media (min-width: 640px) {
+    flex-direction: column !important;
+  }
+}

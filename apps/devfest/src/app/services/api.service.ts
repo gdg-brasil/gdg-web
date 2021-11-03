@@ -20,7 +20,6 @@ export class ApiService {
         return data.map(speaker => {
           const { acf } = speaker;
           const { photo, deck } = acf;
-          console.log(deck);
           const title = deck[0]?.post_title;
           return { ...acf, photoUrl: photo.url, title } as Speaker;
         });

@@ -74,6 +74,9 @@ export interface Talk {
     tags: string[];
     level: string;
     abstract: string;
+    link?: string;
+    knowlegde?: string;
+    embed_code?: string;
   }
 }
 
