@@ -19,8 +19,10 @@ export class ApiService {
       map((data: any[]): Speaker[] => {
         return data.map(speaker => {
           const { acf } = speaker;
-          const { photo } = acf;
-          return { ...acf, photoUrl: photo.url } as Speaker;
+          const { photo, deck } = acf;
+          console.log(deck);
+          const title = deck[0]?.post_title;
+          return { ...acf, photoUrl: photo.url, title } as Speaker;
         });
       })
     );
@@ -95,11 +97,13 @@ export class ApiService {
 
           const schedule = scheduler.map((s: any): Talk => {
             const { start, end, speaker, deck } = s;
-            const speakerName = speaker[0]?.acf?.name;
-            const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+            let speakers: any[] = [];
+            if (Array.isArray(speaker)) {
+              speakers = speaker.map((sp: any) => ({name: sp.acf?.name, photoUrl: sp.acf?.photo?.url}));
+            }
             const details = deck[0]?.acf;
 
-            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakers, details, date, name } as Talk
           });
 
           return { name, date, embedded_code, schedule } as Track;
@@ -118,11 +122,14 @@ export class ApiService {
 
           const schedule = scheduler.map((s: any): Talk => {
             const { start, end, speaker, deck } = s;
-            const speakerName = speaker[0]?.acf?.name;
-            const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+
+            let speakers: any[] = [];
+            if (Array.isArray(speaker)) {
+              speakers = speaker.map((sp: any) => ({name: sp.acf?.name, photoUrl: sp.acf?.photo?.url}));
+            }
             const details = deck[0]?.acf;
 
-            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakers, details, date, name } as Talk
           });
 
           return { name, date, embedded_code, schedule } as Track;
