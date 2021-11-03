@@ -14,6 +14,7 @@ export class ApiService {
   constructor(private http: HttpClient) { }
 
   getAllSpeakers(): Observable<Speaker[]> {
+    // return this.http.get<any[]>('assets/json/speakers.json').pipe(
     return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
       map((data: any[]): Speaker[] => {
         return data.map(speaker => {
@@ -37,6 +38,7 @@ export class ApiService {
   }
 
   getAllOrganizers(): Observable<Organizer[]> {
+    // return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
     return this.http.get<any[]>(`${this.baseUrl}/organizers?per_page=50`).pipe(
       map((data: any[]): Organizer[] => {
         return data.map(organizer => {
@@ -84,21 +86,22 @@ export class ApiService {
   }
 
   getAllTracks(): Observable<Track[]> {
+    // return this.http.get<any[]>('assets/json/tracks.json').pipe(
     return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
       map((data: any[]): Track[] => {
         return data.map(track => {
           const { acf } = track;
           const { name, date, embedded_code, scheduler } = acf;
-
+          
           const schedule = scheduler.map((s: any): Talk => {
               const { start, end, speaker, deck } = s;
               const speakerName = speaker[0]?.acf?.name;
               const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
               const details = deck[0]?.acf;
-
+  
               return {start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
           });
-
+          
           return { name, date, embedded_code, schedule } as Track;
         });
       }),
@@ -106,21 +109,22 @@ export class ApiService {
   }
 
   getAllTracksByDate(): Observable<TrackDate[]> {
+    // return this.http.get<any[]>('assets/json/tracks.json').pipe(
     return this.http.get<any[]>(`${this.baseUrl}/tracks?per_page=50`).pipe(
       map((data: any[]): Track[] => {
         return data.map(track => {
           const { acf } = track;
           const { name, date, embedded_code, scheduler } = acf;
-
+          
           const schedule = scheduler.map((s: any): Talk => {
               const { start, end, speaker, deck } = s;
               const speakerName = speaker[0]?.acf?.name;
               const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
               const details = deck[0]?.acf;
-
+  
               return {start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
           });
-
+          
           return { name, date, embedded_code, schedule } as Track;
         });
       }),
@@ -136,7 +140,7 @@ export class ApiService {
   }
 
   getAllSponsors(): Observable<SponsorsByCategory[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/sponsors?per_page=50`).pipe(
+    return this.http.get<any[]>(`${this.baseUrl}/sponsors`).pipe(
       map((data: any[],): SponsorsByCategory[] => {
         return data.reduce((_acc: SponsorsByCategory[], _actual) => {
           const _temp = _actual?.acf;
