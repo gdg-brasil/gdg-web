@@ -10,6 +10,7 @@
       <a routerLink="/" class="sidenav-logo"><img src="assets/img/logo.png" /></a>
     </mat-toolbar>
     <mat-nav-list>
+      <a class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeNavbar()">Home</a>
       <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active" (click)="closeNavbar()">Palestrantes</a>
       <a class="nav-item" routerLink="/agenda" routerLinkActive="active" (click)="closeNavbar()">Agenda</a>
       <a class="nav-item" routerLink="/organizacao" routerLinkActive="active" (click)="closeNavbar()">Organização</a>
@@ -30,6 +31,7 @@
       <a routerLink="/" class="sidenav-logo" *ngIf="(isHandset$ | async) === false"><img src="assets/img/logo.png" /></a>
       <div style="flex: 1;"></div>
       <ng-container *ngIf="(isHandset$ | async) === false">
+        <a class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
         <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active">Palestrantes</a>
         <a class="nav-item" routerLink="/agenda" routerLinkActive="active">Agenda</a>
         <a class="nav-item" routerLink="/organizacao" routerLinkActive="active">Organização</a>
