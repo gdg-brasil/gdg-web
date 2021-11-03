@@ -3,8 +3,7 @@ import { Routes, RouterModule } from '@angular/router';
 import { HomePageComponent, SpeakersPageComponent, TeamPageComponent, PrivacyPolicyPageComponent, WatchPageComponent, SchedulePageComponent, Component } from './pages';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
-  { path: 'home', component: HomePageComponent },
+  { path: '', component: HomePageComponent, pathMatch: 'full' },
   { path: 'organizacao', component: TeamPageComponent },
   { path: 'politica-privacidade', component: PrivacyPolicyPageComponent },
   { path: 'palestrantes', component: SpeakersPageComponent },

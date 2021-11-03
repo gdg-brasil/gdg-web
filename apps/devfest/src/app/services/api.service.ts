@@ -94,12 +94,12 @@ export class ApiService {
           const { name, date, embedded_code, scheduler } = acf;
 
           const schedule = scheduler.map((s: any): Talk => {
-              const { start, end, speaker, deck } = s;
-              const speakerName = speaker[0]?.acf?.name;
-              const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
-              const details = deck[0]?.acf;
+            const { start, end, speaker, deck } = s;
+            const speakerName = speaker[0]?.acf?.name;
+            const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+            const details = deck[0]?.acf;
 
-              return {start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
           });
 
           return { name, date, embedded_code, schedule } as Track;
@@ -117,12 +117,12 @@ export class ApiService {
           const { name, date, embedded_code, scheduler } = acf;
 
           const schedule = scheduler.map((s: any): Talk => {
-              const { start, end, speaker, deck } = s;
-              const speakerName = speaker[0]?.acf?.name;
-              const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
-              const details = deck[0]?.acf;
+            const { start, end, speaker, deck } = s;
+            const speakerName = speaker[0]?.acf?.name;
+            const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+            const details = deck[0]?.acf;
 
-              return {start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
           });
 
           return { name, date, embedded_code, schedule } as Track;
@@ -130,9 +130,9 @@ export class ApiService {
       }),
       map((data: Track[]): TrackDate[] => {
         const dates = [];
-        dates.push({ label: '05 Nov', tracks: data.filter(track => track.date === "05\/11\/2021")});
-        dates.push({ label: '06 Nov', tracks: data.filter(track => track.date === "06\/11\/2021")});
-        dates.push({ label: '07 Nov', tracks: data.filter(track => track.date === "07\/11\/2021")});
+        dates.push({ label: '05 Nov', tracks: data.filter(track => track.date === "05\/11\/2021") });
+        dates.push({ label: '06 Nov', tracks: data.filter(track => track.date === "06\/11\/2021") });
+        dates.push({ label: '07 Nov', tracks: data.filter(track => track.date === "07\/11\/2021") });
 
         return dates;
       })
@@ -148,7 +148,8 @@ export class ApiService {
             name: _temp?.name,
             url: _temp?.site,
             logoUrl: _temp?.logo?.sizes?.medium,
-            category: _temp?.type_name
+            category: _temp?.type_name,
+            order: _temp?.order
             // sponsor_type
           } as Sponsor;
 
@@ -158,6 +159,7 @@ export class ApiService {
 
           if (_categoryFinded > -1) {
             _acc[_categoryFinded].sponsors.push(_sponsor)
+            _acc[_categoryFinded].sponsors.sort((el, ol) => { return el.order - ol.order })
           } else {
             _acc.push({
               name: _sponsor.category,
@@ -165,7 +167,6 @@ export class ApiService {
               sponsors: [_sponsor],
             })
           }
-          console.log('acc', _acc)
           return _acc;
         }, new Array<SponsorsByCategory>()).sort((el, ol) => el.order - ol.order).filter((el: SponsorsByCategory) => el.name != 'Todos');
       }));
