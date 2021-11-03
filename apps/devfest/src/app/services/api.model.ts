@@ -50,6 +50,7 @@ export interface Sponsor {
   name: string;
   logoUrl: string;
   category: string;
+  order: number;
 }
 
 export interface SponsorsByCategory {
