@@ -70,7 +70,7 @@ const PAGES = [
     HttpClientModule,
     AppRoutingModule,
     MaterialModule,
-    ServiceWorkerModule.register('ngsw-worker.js', {
+    ServiceWorkerModule.register('safe-worker.js', {
       enabled: environment.production,
       // Register the ServiceWorker as soon as the app is stable
       // or after 30 seconds (whichever comes first).
