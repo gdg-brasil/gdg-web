@@ -170,4 +170,16 @@ export class ApiService {
         }, new Array<SponsorsByCategory>()).sort((el, ol) => el.order - ol.order).filter((el: SponsorsByCategory) => el.name != 'Todos');
       }));
   }
+
+  getAllSwags(): Observable<Swags[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
+      map((data: any[]): Speaker[] => {
+        return data.map(speaker => {
+          const { acf } = speaker;
+          const { photo } = acf;
+          return { ...acf, photoUrl: photo.url } as Speaker;
+        });
+      })
+    );
+  }
 }

@@ -10,7 +10,7 @@ import {
   HomePageComponent,
   SchedulePageComponent,
   SpeakersPageComponent,
-  TeamPageComponent, 
+  TeamPageComponent,
   WatchPageComponent
 } from './pages';
 import {
@@ -27,7 +27,8 @@ import {
   VideoTrackSectionComponent,
   TracksSectionComponent,
   ScheduleSectionComponent,
-  SponsorsSectionComponent
+  SponsorsSectionComponent,
+  SwagsSectionComponent,
 } from './components';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -47,7 +48,8 @@ const COMPONENTS = [
   TracksSectionComponent,
   ScheduleSectionComponent,
   LinksSectionComponent,
-  SponsorsSectionComponent
+  SponsorsSectionComponent,
+  SwagsSectionComponent
 ]
 
 const PAGES = [
@@ -55,7 +57,8 @@ const PAGES = [
   SchedulePageComponent,
   SpeakersPageComponent,
   TeamPageComponent,
-  WatchPageComponent
+  WatchPageComponent,
+  SwagsPageComponent,
 ]
 
 @NgModule({
