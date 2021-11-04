@@ -9,8 +9,8 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   HomePageComponent,
   SchedulePageComponent,
-  SpeakersPageComponent,
-  TeamPageComponent, 
+  SpeakersPageComponent, SwagsPageComponent,
+  TeamPageComponent,
   WatchPageComponent
 } from './pages';
 import {
@@ -27,10 +27,12 @@ import {
   VideoTrackSectionComponent,
   TracksSectionComponent,
   ScheduleSectionComponent,
-  SponsorsSectionComponent
+  SponsorsSectionComponent,
 } from './components';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ScheduleDialogComponent } from './pages/schedule-page/schedule-dialog/schedule-dialog.component';
+import { SpeakersDialogComponent } from './pages/speakers-page/speakers-dialog/speakers-dialog.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -47,7 +49,9 @@ const COMPONENTS = [
   TracksSectionComponent,
   ScheduleSectionComponent,
   LinksSectionComponent,
-  SponsorsSectionComponent
+  SponsorsSectionComponent,
+  ScheduleDialogComponent,
+  SpeakersDialogComponent
 ]
 
 const PAGES = [
@@ -55,7 +59,8 @@ const PAGES = [
   SchedulePageComponent,
   SpeakersPageComponent,
   TeamPageComponent,
-  WatchPageComponent
+  WatchPageComponent,
+  SwagsPageComponent,
 ]
 
 @NgModule({

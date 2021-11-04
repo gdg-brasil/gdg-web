@@ -1,25 +1,26 @@
-<div *ngFor="let track of tracks" [class.hide]="!isSelectedTrack(track)">
-    <h2 class="container-title">
-        {{track?.name ? 'Trilha ' + track?.name : ''}}
-    </h2>
-    <div class="container video-wrapper">
-        <div class="buttons">
-            <mat-selection-list #shoes [multiple]="false">
-                <mat-list-option *ngFor="let track of tracks; let i = index" (click)="selectTrack($event, track)" [value]="track">
-                    <strong>{{ track.name }}</strong>
-                </mat-list-option>
-            </mat-selection-list>
-        </div>
-        <dfb-video-track-section [track]="track"></dfb-video-track-section>
-        <div class="chat">
-            <iframe 
-                allowfullscreen="" 
-                frameborder="0" 
-                [src]="safeYoutubeChatUrl"
-                loading="lazy"
-                class="lazyload chat-youtube" 
-                [attr.data-src]="safeYoutubeChatUrl">
-            </iframe>
-        </div>
-    </div>
+<div class="container" *ngIf="tracks?.length; else empty">
+  <mat-tab-group mat-align-tabs="start" selectedIndex="2">
+    <mat-tab *ngFor="let track of tracks" label="{{track?.name ? track?.name : ''}}">
+      <div class="video-wrapper">
+        <iframe 
+          [src]="safeUrl(track)" 
+          class="video" 
+          frameborder="0" 
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; hyroscope; picture-in-picture" 
+          allowfullscreen>
+        </iframe>
+        <iframe 
+            allowfullscreen="" 
+            frameborder="0" 
+            [src]="safeYoutubeChatUrl(track)"
+            loading="lazy"
+            class="lazyload chat-youtube" 
+            [attr.data-src]="safeYoutubeChatUrl(track)">
+        </iframe>
+      </div>
+    </mat-tab>
+  </mat-tab-group>
 </div>
+<ng-template #empty>
+  <h2 class="empty">Não há trilhas para serem exibidas hoje 😢</h2>
+</ng-template>

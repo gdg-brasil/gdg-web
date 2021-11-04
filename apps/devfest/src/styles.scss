@@ -49,7 +49,7 @@ html {
 }
 
 body {
-  font-family: 'Roboto', Helvetica, Arial, sans-serif
+  font-family: 'Roboto', Helvetica, Arial, sans-serif;
 }
 
 h1, h2, h3, h4, h5, h6 {
@@ -126,4 +126,11 @@ paper-button {
 .mat-dialog-container {
   width: 720px !important;
   padding: 0 !important;
+}
+
+.mat-chip-list-wrapper {
+  flex-direction: row !important;
+  @media (min-width: 640px) {
+    flex-direction: column !important;
+  }
 }

@@ -12,7 +12,8 @@ export class ScheduleSectionComponent {
 
   openDialog(event: Event, talk: Talk) {
     event.preventDefault();
-    
-    this.show.emit(talk);
+    if (talk.speakers[0]?.name) {
+      this.show.emit(talk);
+    }
   }
 }
