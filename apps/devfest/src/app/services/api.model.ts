@@ -90,3 +90,14 @@ export interface Track {
   date?: string;
   schedule?: Talk[];
 }
+
+export interface Swag {
+  title: string;
+  description: string;
+  link: string;
+  imageUrl: string;
+  author: string;
+  order: number;
+  type: string;
+  cta: string;
+}
