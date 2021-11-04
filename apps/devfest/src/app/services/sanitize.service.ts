@@ -10,9 +10,9 @@ export class SanitizeService {
   safeYoutubeUrl(embedded: string): SafeResourceUrl {
     return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/embed/${embedded}`);
   }
-  
+
   safeYoutubeChatUrl(embedded: string): SafeResourceUrl {
-    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/live_chat?v=${embedded}&embed_domain=localhost`);
+    return this.sanitizer.bypassSecurityTrustResourceUrl(`https://www.youtube.com/live_chat?v=${embedded}&embed_domain=devfest.com.br`);
   }
-  
+
 }
