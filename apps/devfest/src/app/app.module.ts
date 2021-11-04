@@ -31,6 +31,8 @@ import {
 } from './components';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
+import { ScheduleDialogComponent } from './pages/schedule-page/schedule-dialog/schedule-dialog.component';
+import { SpeakersDialogComponent } from './pages/speakers-page/speakers-dialog/speakers-dialog.component';
 
 const COMPONENTS = [
   HeaderComponent,
@@ -47,7 +49,9 @@ const COMPONENTS = [
   TracksSectionComponent,
   ScheduleSectionComponent,
   LinksSectionComponent,
-  SponsorsSectionComponent
+  SponsorsSectionComponent,
+  ScheduleDialogComponent,
+  SpeakersDialogComponent
 ]
 
 const PAGES = [
