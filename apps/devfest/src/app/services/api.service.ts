@@ -136,6 +136,7 @@ export class ApiService {
       }),
       map((data: Track[]): TrackDate[] => {
         const dates = [];
+        dates.push({ label: '04 Nov', tracks: data.filter(track => track.date === "04\/11\/2021") });
         dates.push({ label: '05 Nov', tracks: data.filter(track => track.date === "05\/11\/2021") });
         dates.push({ label: '06 Nov', tracks: data.filter(track => track.date === "06\/11\/2021") });
         dates.push({ label: '07 Nov', tracks: data.filter(track => track.date === "07\/11\/2021") });

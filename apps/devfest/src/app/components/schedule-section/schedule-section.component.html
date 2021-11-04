@@ -1,6 +1,6 @@
 <div class="container">
     <mat-tab-group mat-align-tabs="start" selectedIndex="2">
-      <mat-tab *ngFor="let date of dates" [label]="date.label">
+      <mat-tab *ngFor="let date of dates | slice:1:4" [label]="date.label">
         <div 
           class="grid"
           [class.cols-1]="date.tracks.length === 1"  
