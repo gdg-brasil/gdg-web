@@ -39,6 +39,7 @@ export interface Speaker {
   linkedin: string;
   twitter: string;
   site: string;
+  title: string;
 }
 
 export interface GaleryInfo {
@@ -64,13 +65,18 @@ export interface Talk {
   end: string;
   name?: string;
   date?: string;
-  speakerName?: string;
-  speakerPhotoUrl?: string;
+  speakers: {
+    name: string;
+    photoUrl: string;
+  }[];
   details?: {
     title: string;
     tags: string[];
     level: string;
     abstract: string;
+    link?: string;
+    knowlegde?: string;
+    embed_code?: string;
   }
 }
 

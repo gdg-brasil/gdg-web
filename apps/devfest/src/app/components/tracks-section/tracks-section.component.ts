@@ -1,4 +1,5 @@
-import { Component, Input, OnChanges } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { SafeResourceUrl } from '@angular/platform-browser';
 import { Track } from '../../services/api.model';
 import { SanitizeService } from '../../services/sanitize.service';
 
@@ -7,35 +8,16 @@ import { SanitizeService } from '../../services/sanitize.service';
   templateUrl: './tracks-section.component.html',
   styleUrls: ['./tracks-section.component.scss'],
 })
-export class TracksSectionComponent implements OnChanges {
+export class TracksSectionComponent {
   @Input() tracks!: Track[] | null;
-  selectedTrack: Track | null = null;
 
   constructor(private sanitizer: SanitizeService) {}
 
-  ngOnChanges() {
-    if(this.tracks?.length) {
-      this.selectedTrack = this.tracks[0];
-    }
+  safeUrl(track: Track): SafeResourceUrl {
+    return this.sanitizer.safeYoutubeUrl(track?.embedded_code);
   }
 
-  isSelectedTrack(track: Track): boolean {
-    return track.name === this.selectedTrack?.name;
-  }
-
-  selectTrack(event: Event, track: Track): void {
-    event.preventDefault();
-
-    this.selectedTrack = track;
-    window.scrollTo({ top: 0, behavior: 'smooth' });
-
-  }
-
-  get safeYoutubeChatUrl() {
-    if (!this.selectedTrack){
-      return '';
-    }
-
-    return this.sanitizer.safeYoutubeChatUrl(this.selectedTrack?.embedded_code);
+  safeYoutubeChatUrl(track: Track): SafeResourceUrl {
+    return this.sanitizer.safeYoutubeChatUrl(track?.embedded_code);
   }
 }

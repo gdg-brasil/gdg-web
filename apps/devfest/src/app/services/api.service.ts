@@ -19,8 +19,9 @@ export class ApiService {
       map((data: any[]): Speaker[] => {
         return data.map(speaker => {
           const { acf } = speaker;
-          const { photo } = acf;
-          return { ...acf, photoUrl: photo.url } as Speaker;
+          const { photo, deck } = acf;
+          const title = deck[0]?.post_title;
+          return { ...acf, photoUrl: photo.url, title } as Speaker;
         });
       })
     );
@@ -95,11 +96,13 @@ export class ApiService {
 
           const schedule = scheduler.map((s: any): Talk => {
             const { start, end, speaker, deck } = s;
-            const speakerName = speaker[0]?.acf?.name;
-            const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+            let speakers: any[] = [];
+            if (Array.isArray(speaker)) {
+              speakers = speaker.map((sp: any) => ({name: sp.acf?.name, photoUrl: sp.acf?.photo?.url}));
+            }
             const details = deck[0]?.acf;
 
-            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakers, details, date, name } as Talk
           });
 
           return { name, date, embedded_code, schedule } as Track;
@@ -118,11 +121,14 @@ export class ApiService {
 
           const schedule = scheduler.map((s: any): Talk => {
             const { start, end, speaker, deck } = s;
-            const speakerName = speaker[0]?.acf?.name;
-            const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
+
+            let speakers: any[] = [];
+            if (Array.isArray(speaker)) {
+              speakers = speaker.map((sp: any) => ({name: sp.acf?.name, photoUrl: sp.acf?.photo?.url}));
+            }
             const details = deck[0]?.acf;
 
-            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakers, details, date, name } as Talk
           });
 
           return { name, date, embedded_code, schedule } as Track;
@@ -130,6 +136,7 @@ export class ApiService {
       }),
       map((data: Track[]): TrackDate[] => {
         const dates = [];
+        dates.push({ label: '04 Nov', tracks: data.filter(track => track.date === "04\/11\/2021") });
         dates.push({ label: '05 Nov', tracks: data.filter(track => track.date === "05\/11\/2021") });
         dates.push({ label: '06 Nov', tracks: data.filter(track => track.date === "06\/11\/2021") });
         dates.push({ label: '07 Nov', tracks: data.filter(track => track.date === "07\/11\/2021") });
