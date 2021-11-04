@@ -9,7 +9,7 @@ import { AppRoutingModule } from './app-routing.module';
 import {
   HomePageComponent,
   SchedulePageComponent,
-  SpeakersPageComponent,
+  SpeakersPageComponent, SwagsPageComponent,
   TeamPageComponent,
   WatchPageComponent
 } from './pages';
@@ -28,7 +28,6 @@ import {
   TracksSectionComponent,
   ScheduleSectionComponent,
   SponsorsSectionComponent,
-  SwagsSectionComponent,
 } from './components';
 import { ServiceWorkerModule } from '@angular/service-worker';
 import { environment } from '../environments/environment';
@@ -48,8 +47,7 @@ const COMPONENTS = [
   TracksSectionComponent,
   ScheduleSectionComponent,
   LinksSectionComponent,
-  SponsorsSectionComponent,
-  SwagsSectionComponent
+  SponsorsSectionComponent
 ]
 
 const PAGES = [

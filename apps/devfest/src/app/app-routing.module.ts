@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
-import { HomePageComponent, SpeakersPageComponent, TeamPageComponent, PrivacyPolicyPageComponent, WatchPageComponent, SchedulePageComponent, Component } from './pages';
+import { HomePageComponent, SpeakersPageComponent, TeamPageComponent, PrivacyPolicyPageComponent, WatchPageComponent, SchedulePageComponent, SwagsPageComponent } from './pages';
 
 const routes: Routes = [
   { path: '', component: HomePageComponent, pathMatch: 'full' },

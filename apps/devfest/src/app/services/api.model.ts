@@ -92,4 +92,6 @@ export interface Swag {
   imageUrl: string;
   author: string;
   order: number;
+  type: string;
+  cta: string;
 }

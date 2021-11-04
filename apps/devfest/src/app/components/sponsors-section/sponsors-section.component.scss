@@ -16,6 +16,7 @@
 
     @media (min-width: 640px) {
       grid-template-columns: repeat(5, 1fr);
+      display: flex;
     }
 
     .sponsor-item {
@@ -30,7 +31,7 @@
 
     .sponsor-image {
         width: 100%;
-        background-size: contain; 
+        background-size: contain;
         background-position: center center;
         background-repeat: no-repeat;
         vertical-align: middle;

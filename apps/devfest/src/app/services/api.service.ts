@@ -3,15 +3,28 @@ import { Injectable } from '@angular/core';
 import { Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { environment } from '../../environments/environment';
-import { Link, MapInfo, Organizer, Speaker, GaleryInfo, SponsorsByCategory, Sponsor, Track, TrackDate, Talk } from './api.model';
+import {
+  GaleryInfo,
+  Link,
+  MapInfo,
+  Organizer,
+  Speaker,
+  Sponsor,
+  SponsorsByCategory,
+  Swag,
+  Talk,
+  Track,
+  TrackDate
+} from './api.model';
 
 @Injectable({
-  providedIn: 'root',
+  providedIn: 'root'
 })
 export class ApiService {
   baseUrl = environment.apiUrl;
 
-  constructor(private http: HttpClient) { }
+  constructor(private http: HttpClient) {
+  }
 
   getAllSpeakers(): Observable<Speaker[]> {
     // return this.http.get<any[]>('assets/json/speakers.json').pipe(
@@ -32,7 +45,7 @@ export class ApiService {
         return data.map(link => {
           const { acf } = link;
           return { ...acf } as Link;
-        })
+        });
       })
     );
   }
@@ -99,12 +112,12 @@ export class ApiService {
             const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
             const details = deck[0]?.acf;
 
-            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk;
           });
 
           return { name, date, embedded_code, schedule } as Track;
         });
-      }),
+      })
     );
   }
 
@@ -122,7 +135,7 @@ export class ApiService {
             const speakerPhotoUrl = speaker[0]?.acf?.photo?.url;
             const details = deck[0]?.acf;
 
-            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk
+            return { start, end, speakerName, speakerPhotoUrl, details, date, name } as Talk;
           });
 
           return { name, date, embedded_code, schedule } as Track;
@@ -130,9 +143,9 @@ export class ApiService {
       }),
       map((data: Track[]): TrackDate[] => {
         const dates = [];
-        dates.push({ label: '05 Nov', tracks: data.filter(track => track.date === "05\/11\/2021") });
-        dates.push({ label: '06 Nov', tracks: data.filter(track => track.date === "06\/11\/2021") });
-        dates.push({ label: '07 Nov', tracks: data.filter(track => track.date === "07\/11\/2021") });
+        dates.push({ label: '05 Nov', tracks: data.filter(track => track.date === '05\/11\/2021') });
+        dates.push({ label: '06 Nov', tracks: data.filter(track => track.date === '06\/11\/2021') });
+        dates.push({ label: '07 Nov', tracks: data.filter(track => track.date === '07\/11\/2021') });
 
         return dates;
       })
@@ -141,7 +154,7 @@ export class ApiService {
 
   getAllSponsors(): Observable<SponsorsByCategory[]> {
     return this.http.get<any[]>(`${this.baseUrl}/sponsors?per_page=50`).pipe(
-      map((data: any[],): SponsorsByCategory[] => {
+      map((data: any[]): SponsorsByCategory[] => {
         return data.reduce((_acc: SponsorsByCategory[], _actual) => {
           const _temp = _actual?.acf;
           const _sponsor = {
@@ -154,32 +167,34 @@ export class ApiService {
           } as Sponsor;
 
           const _categoryFinded = _acc.findIndex((_category: SponsorsByCategory) => {
-            return _category.name == _sponsor.category
+            return _category.name == _sponsor.category;
           });
 
           if (_categoryFinded > -1) {
-            _acc[_categoryFinded].sponsors.push(_sponsor)
-            _acc[_categoryFinded].sponsors.sort((el, ol) => { return el.order - ol.order })
+            _acc[_categoryFinded].sponsors.push(_sponsor);
+            _acc[_categoryFinded].sponsors.sort((el, ol) => {
+              return el.order - ol.order;
+            });
           } else {
             _acc.push({
               name: _sponsor.category,
               order: _temp.sponsor_type,
-              sponsors: [_sponsor],
-            })
+              sponsors: [_sponsor]
+            });
           }
           return _acc;
         }, new Array<SponsorsByCategory>()).sort((el, ol) => el.order - ol.order).filter((el: SponsorsByCategory) => el.name != 'Todos');
       }));
   }
 
-  getAllSwags(): Observable<Swags[]> {
-    return this.http.get<any[]>(`${this.baseUrl}/speakers?per_page=50`).pipe(
-      map((data: any[]): Speaker[] => {
-        return data.map(speaker => {
-          const { acf } = speaker;
-          const { photo } = acf;
-          return { ...acf, photoUrl: photo.url } as Speaker;
-        });
+  getAllSwags(): Observable<Swag[]> {
+    return this.http.get<any[]>(`${this.baseUrl}/swag?per_page=50`).pipe(
+      map((data: any[]): Swag[] => {
+        return data.map(swag => {
+          const { acf } = swag;
+          const { image } = acf;
+          return { ...acf, imageUrl: image.url } as Swag;
+        }).sort((el, ol) => el.order - ol.order);
       })
     );
   }
