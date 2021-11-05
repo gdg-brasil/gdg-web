@@ -11,10 +11,12 @@
     </mat-toolbar>
     <mat-nav-list>
       <a class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }" (click)="closeNavbar()">Home</a>
+      <a class="nav-item" routerLink="/assistir" routerLinkActive="active" (click)="closeNavbar()">Assistir</a>
       <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active" (click)="closeNavbar()">Palestrantes</a>
       <a class="nav-item" routerLink="/agenda" routerLinkActive="active" (click)="closeNavbar()">Agenda</a>
       <a class="nav-item" routerLink="/organizacao" routerLinkActive="active" (click)="closeNavbar()">Organização</a>
-      <!-- <a class="nav-item" routerLink="/swags" routerLinkActive="active" (click)="closeNavbar()">Estou com Sorte!</a> -->
+      <a class="nav-item" routerLink="/swags" routerLinkActive="active" (click)="closeNavbar()">Estou com Sorte!</a>
+      <a class="nav-item" href='https://spatial.chat/s/devfest' target='_blank' (click)="closeNavbar()">Feira de Carreira</a>
       <a class="nav-item" href='https://loja.devfest.com.br/?utm_source=devfestbrasil&utm_campaign=devfest2021&utm_medium=link' target='_blank' (click)="closeNavbar()">Loja</a>
     </mat-nav-list>
   </mat-sidenav>
@@ -33,10 +35,12 @@
       <div style="flex: 1;"></div>
       <ng-container *ngIf="(isHandset$ | async) === false">
         <a class="nav-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{ exact: true }">Home</a>
+        <a class="nav-item" routerLink="/assistir" routerLinkActive="active">Assistir</a>
         <a class="nav-item" routerLink="/palestrantes" routerLinkActive="active">Palestrantes</a>
         <a class="nav-item" routerLink="/agenda" routerLinkActive="active">Agenda</a>
         <a class="nav-item" routerLink="/organizacao" routerLinkActive="active">Organização</a>
-        <!-- <a class="nav-item" routerLink="/swags" routerLinkActive="active">Estou com Sorte!</a> -->
+        <a class="nav-item" routerLink="/swags" routerLinkActive="active">Estou com Sorte!</a>
+        <a class="nav-item" href='https://spatial.chat/s/devfest' target='_blank'>Feira de Carreira</a>
         <a class="nav-item" href='https://loja.devfest.com.br/?utm_source=devfestbrasil&utm_campaign=devfest2021&utm_medium=link' target='_blank'>Loja</a>
       </ng-container>
       <button mat-raised-button color="primary" class="cta" (click)="navigateToIndeeds()">Fazer Inscrição</button>
